@@ -154,7 +154,7 @@ export default function Home() {
                 icon: "🌍",
                 color: "border-emerald-500/30 hover:border-emerald-500/60",
                 glow: "hover:shadow-emerald-500/10",
-                skills: ["PostGIS & PostgreSQL", "Mapbox GL JS / CesiumJS", "Leaflet.js", "ArcGIS Pro & QGIS", "Pyproj & GDAL", "GeoPandas & Shapely", "Turf.js", "OSRM"],
+                skills: ["PostGIS & PostgreSQL", "Mapbox GL JS / Cesium", "Leaflet.js", "ArcGIS Pro & QGIS", "Pyproj & GDAL", "GeoPandas & Shapely", "Turf.js", "OSRM"],
               },
               {
                 cat: "Backend & APIs",
