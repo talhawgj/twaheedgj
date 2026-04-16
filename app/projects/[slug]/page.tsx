@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
-const BASE_URL = "https://talhawaheed.dev";
+const BASE_URL = "https://twaheedgj.vercel.app";
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
 export async function generateMetadata({

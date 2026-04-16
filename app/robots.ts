@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [],
       },
     ],
-    sitemap: "https://talhawaheed.dev/sitemap.xml",
-    host: "https://talhawaheed.dev",
+    sitemap: "https://twaheedgj.vercel.app/sitemap.xml",
+    host: "https://twaheedgj.vercel.app",
   };
 }
