@@ -98,6 +98,17 @@ export default function Home() {
             >
               Email Me
             </a>
+            <a
+              href="https://upwork.com/freelancers/talhaw"
+              target="_blank"
+              rel="noreferrer"
+              className="px-8 py-3.5 rounded-full font-semibold border border-white/10 bg-white/5 text-white hover:bg-white/10 transition-all duration-200 flex items-center gap-2"
+            >
+              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.58,6.86A5.25,5.25,0,0,0,13.26,9.1V2.6H10.42V13.88a3.17,3.17,0,1,1-6.33,0V6.86H1.25v7.2a6,6,0,0,0,12,0V11a2.4,2.4,0,0,1,4.36,1.42c0,3-4.52,7.31-4.52,7.31L15.3,21.8l3.6-5.83A5.13,5.13,0,0,0,20.42,12C20.42,8.91,19.34,6.86,17.58,6.86Z" />
+              </svg>
+              Upwork
+            </a>
           </div>
         </div>
 

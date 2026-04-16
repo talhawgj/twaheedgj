@@ -154,6 +154,7 @@ const personSchema = {
   sameAs: [
     "https://github.com/talhawgj",
     "https://www.linkedin.com/in/talha-waheed",
+    "https://upwork.com/freelancers/talhaw",
   ],
 };
 
