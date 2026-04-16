@@ -114,7 +114,7 @@ export const metadata: Metadata = {
 
   // ── Verification ───────────────────────────────────────────────────────────
   verification: {
-    google: "pXfJVbcD7GTUgYIh432Ee4ZeKFW7RAzfarVhityyBtE",
+    google: "Jx4J_xJiw1QuzppLdKArtl0mfakwhsM2FOo-Jf1wQ0I",
   },
 
   // ── App / PWA hints ────────────────────────────────────────────────────────
