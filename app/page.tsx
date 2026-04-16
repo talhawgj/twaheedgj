@@ -154,14 +154,14 @@ export default function Home() {
                 icon: "🌍",
                 color: "border-emerald-500/30 hover:border-emerald-500/60",
                 glow: "hover:shadow-emerald-500/10",
-                skills: ["PostGIS & PostgreSQL", "Mapbox GL JS / Cesium", "Leaflet.js", "ArcGIS Pro & QGIS", "Pyproj & GDAL", "GeoPandas & Shapely", "Turf.js", "OSRM"],
+                skills: ["PostGIS & PostgreSQL", "Mapbox GL JS / Cesium", "GeoServer", "ArcGIS Pro & QGIS", "Pyproj & GDAL", "GeoPandas & Shapely", "Turf.js", "OSRM"],
               },
               {
                 cat: "Backend & APIs",
                 icon: "⚡",
                 color: "border-blue-500/30 hover:border-blue-500/60",
                 glow: "hover:shadow-blue-500/10",
-                skills: ["FastAPI & Uvicorn", "Node.js & Express", "Django & DRF", "REST API Design", "JWT Authentication", "PostgreSQL", "MongoDB", "Docker & Compose"],
+                skills: ["FastAPI & Uvicorn", "Celery & Redis", "Django & DRF", "SQLAlchemy", "JWT Authentication", "PostgreSQL", "MongoDB", "Docker & Compose"],
               },
               {
                 cat: "Frontend",
@@ -175,7 +175,7 @@ export default function Home() {
                 icon: "🧠",
                 color: "border-yellow-500/30 hover:border-yellow-500/60",
                 glow: "hover:shadow-yellow-500/10",
-                skills: ["Python & Pandas", "Scikit-learn", "BERT & LSTM (NLP)", "Rasterio", "AWS S3 / EC2", "Firebase", "Sentinel Hub API", "Scrapy & Playwright"],
+                skills: ["Python & Pandas", "Scikit-learn", "Google Earth Engine", "Rasterio", "AWS S3 / EC2", "Firebase", "Sentinel Hub API", "Selenium Web Scraping"],
               },
             ].map((category) => (
               <div
