@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const BASE_URL = "https://talhawaheed.dev";
+const BASE_URL = "https://twaheedgj.vercel.app";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -112,10 +112,10 @@ export const metadata: Metadata = {
     },
   },
 
-  // ── Verification (add when deploying) ──────────────────────────────────────
-  // verification: {
-  //   google: "YOUR_GOOGLE_SEARCH_CONSOLE_TOKEN",
-  // },
+  // ── Verification ───────────────────────────────────────────────────────────
+  verification: {
+    google: "pXfJVbcD7GTUgYIh432Ee4ZeKFW7RAzfarVhityyBtE",
+  },
 
   // ── App / PWA hints ────────────────────────────────────────────────────────
   applicationName: "Talha Waheed Portfolio",
