@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const BASE_URL = "https://twaheedgj.vercel.app";
@@ -201,6 +202,7 @@ export default function RootLayout({
       <body className="min-h-full antialiased">
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
