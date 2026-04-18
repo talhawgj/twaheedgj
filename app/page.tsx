@@ -26,7 +26,7 @@ export default function Home() {
   const categories = Array.from(new Set(projects.map((p) => p.category)));
 
   return (
-    <main className="min-h-screen bg-[#080c14] text-white">
+    <main className="min-h-screen bg-black text-white">
       <NavBar />
 
 
@@ -37,8 +37,8 @@ export default function Home() {
       >
         {/* Ambient glow */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-blue-600/10 blur-[120px]" />
-          <div className="absolute top-1/3 left-1/3 w-[400px] h-[400px] rounded-full bg-violet-600/8 blur-[100px]" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-yellow-600/10 blur-[120px]" />
+          <div className="absolute top-1/3 left-1/3 w-[400px] h-[400px] rounded-full bg-yellow-600/8 blur-[100px]" />
         </div>
 
         {/* Grid overlay */}
@@ -55,7 +55,7 @@ export default function Home() {
             <span className="block gradient-text">Waheed</span>
           </h1>
 
-          <p className="text-lg sm:text-2xl text-blue-400 font-semibold mb-5 tracking-wide uppercase text-sm">
+          <p className="text-lg sm:text-2xl text-yellow-400 font-semibold mb-5 tracking-wide uppercase text-sm">
             Full-Stack GIS Developer & Spatial Data Engineer
           </p>
 
@@ -68,7 +68,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="#projects"
-              className="group px-8 py-3.5 rounded-full font-semibold bg-gradient-to-r from-blue-500 to-violet-600 text-white hover:opacity-90 transition-all duration-200 shadow-xl shadow-blue-500/20 flex items-center gap-2"
+              className="group px-8 py-3.5 rounded-full font-semibold bg-gradient-to-r from-yellow-500 to-yellow-600 text-black hover:opacity-90 transition-all duration-200 shadow-xl shadow-yellow-500/30 flex items-center gap-2"
             >
               View My Work
               <svg
@@ -159,15 +159,15 @@ export default function Home() {
               {
                 cat: "Backend & APIs",
                 icon: "⚡",
-                color: "border-blue-500/30 hover:border-blue-500/60",
-                glow: "hover:shadow-blue-500/10",
+                color: "border-yellow-500/30 hover:border-yellow-500/60",
+                glow: "hover:shadow-yellow-500/10",
                 skills: ["FastAPI & Uvicorn", "Celery & Redis", "Django & DRF", "SQLAlchemy", "JWT Authentication", "PostgreSQL", "MongoDB", "Docker & Compose"],
               },
               {
                 cat: "Frontend",
                 icon: "🎨",
-                color: "border-violet-500/30 hover:border-violet-500/60",
-                glow: "hover:shadow-violet-500/10",
+                color: "border-yellow-500/30 hover:border-yellow-500/60",
+                glow: "hover:shadow-yellow-500/10",
                 skills: ["Next.js 16 / React 19", "TypeScript", "Tailwind CSS", "Recharts & D3", "Mapbox GL JS", "Framer Motion", "Material-UI", "Vite"],
               },
               {
@@ -234,11 +234,11 @@ export default function Home() {
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {["Python", "SQL & NoSQL", "ETL Pipelines", "Scikit-learn", "Supervised ML", "Unsupervised ML", "Data Visualisation", "Feature Engineering"].map((s) => (
-                    <span key={s} className="px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs font-medium">{s}</span>
+                    <span key={s} className="px-2.5 py-1 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-300 text-xs font-medium">{s}</span>
                   ))}
                 </div>
                 <a href="https://www.credly.com/badges/e3def220-e11a-46e3-a00d-bc7311532744/public_url" target="_blank" rel="noreferrer" id="badge-applied-ds"
-                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors">
+                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-yellow-400 hover:text-yellow-300 transition-colors">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
                   Verify on Credly
                 </a>
@@ -383,48 +383,77 @@ export default function Home() {
       <footer id="contact" className="py-28 px-5 sm:px-8 relative overflow-hidden">
         {/* Glow */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-blue-600/10 blur-[100px]" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-yellow-600/10 blur-[100px]" />
         </div>
 
-        <div className="relative max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-6xl font-extrabold text-white mb-6 leading-tight">
-            Let&apos;s Build Something{" "}
-            <span className="gradient-text">Spatial</span>
-          </h2>
-          <p className="text-slate-400 text-lg leading-relaxed mb-12 max-w-xl mx-auto">
-            Available for freelance projects, full-time roles, and consulting. Whether
-            it&apos;s a GIS platform, geospatial API, or data pipeline — let&apos;s talk.
-          </p>
+        <div className="relative max-w-4xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl sm:text-6xl font-extrabold text-white mb-6 leading-tight">
+              Let&apos;s Build Something{" "}
+              <span className="gradient-text">Spatial</span>
+            </h2>
+            <p className="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto">
+              Available for freelance projects, full-time roles, and consulting. Whether
+              it&apos;s a GIS platform, geospatial API, or data pipeline — let&apos;s talk.
+            </p>
+          </div>
 
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
+          {/* Contact Icons - Minimal Design */}
+          <div className="flex justify-center items-center gap-6 mb-20">
+            {/* Email */}
             <a
               href="mailto:talhawaheed7807@gmail.com"
               id="email-contact"
-              className="group flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-violet-600 text-white font-semibold hover:opacity-90 transition-all shadow-xl shadow-blue-500/20"
+              className="group p-4 rounded-2xl bg-white/10 hover:bg-yellow-500 text-white hover:text-black transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/50"
+              aria-label="Send email"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
-              talhawaheed7807@gmail.com
             </a>
+
+            {/* WhatsApp */}
+            <a
+              href="https://wa.me/923096444416?text=Hi%20Talha%2C%20I%27m%20interested%20in%20discussing%20a%20project%20with%20you."
+              target="_blank"
+              rel="noreferrer"
+              id="whatsapp-contact"
+              className="group p-4 rounded-2xl bg-white/10 hover:bg-green-500 text-white hover:text-black transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50"
+              aria-label="Contact via WhatsApp"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-9.746 9.798c0 2.701.708 5.333 2.055 7.622l-2.207 8.067a9.847 9.847 0 0014.328-14.32 9.868 9.868 0 00-4.426-10.967zm11.234-3.79a11.855 11.855 0 00-8.383-3.487c-6.513 0-11.876 5.363-11.876 11.876 0 2.095.554 4.163 1.604 5.98L1.07 23.93a11.842 11.842 0 005.596 1.425h.005c6.513 0 11.876-5.363 11.876-11.876a11.849 11.849 0 00-3.47-8.38z" />
+              </svg>
+            </a>
+
+            {/* GitHub */}
             <a
               href="https://github.com/talhawgj"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-3 px-8 py-4 rounded-full border border-white/10 bg-white/5 text-white font-semibold hover:bg-white/10 transition-all"
+              className="group p-4 rounded-2xl bg-white/10 hover:bg-white text-white hover:text-black transition-all duration-300 hover:shadow-lg hover:shadow-white/50"
+              aria-label="GitHub profile"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
               </svg>
-              github.com/talhawgj
+            </a>
+
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com/in/talhawgj/"
+              target="_blank"
+              rel="noreferrer"
+              className="group p-4 rounded-2xl bg-white/10 hover:bg-blue-600 text-white hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50"
+              aria-label="LinkedIn profile"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+              </svg>
             </a>
           </div>
 
-          <div className="flex justify-center items-center gap-3 text-slate-500 mb-8">
-            <span>📞 +92 309 6444416</span>
-          </div>
-
-          <div className="pt-8 border-t border-white/8 text-slate-600 text-sm">
+          <div className="pt-8 border-t border-white/8 text-center text-slate-600 text-sm">
             © {new Date().getFullYear()} Talha Waheed · Built with Next.js & Tailwind CSS
           </div>
         </div>

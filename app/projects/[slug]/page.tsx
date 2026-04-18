@@ -137,7 +137,7 @@ export default async function ProjectPage({
   };
 
   return (
-    <div className="min-h-screen bg-[#080c14] text-white">
+    <div className="min-h-screen bg-black text-white">
       {/* ─── JSON-LD ───────────────────────────────────────────── */}
       <script
         type="application/ld+json"
@@ -232,7 +232,7 @@ export default async function ProjectPage({
             {/* Overview */}
             <section>
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 text-sm">
+                <span className="w-8 h-8 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400 text-sm">
                   📋
                 </span>
                 Project Overview
@@ -245,7 +245,7 @@ export default async function ProjectPage({
             {/* Long Description */}
             <section>
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center text-violet-400 text-sm">
+                <span className="w-8 h-8 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400 text-sm">
                   💡
                 </span>
                 The Problem & Solution
@@ -269,7 +269,7 @@ export default async function ProjectPage({
                     key={i}
                     className="flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/8 hover:bg-white/[0.05] transition-colors"
                   >
-                    <span className="flex-shrink-0 w-7 h-7 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 text-xs font-bold mt-0.5">
+                    <span className="flex-shrink-0 w-7 h-7 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400 text-xs font-bold mt-0.5">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="text-slate-300 text-sm leading-relaxed">{feature}</span>
@@ -290,7 +290,7 @@ export default async function ProjectPage({
                 <div className="relative pl-6 border-l-2 border-white/10 space-y-6">
                   {project.architecture.map((layer, i) => (
                     <div key={i} className="relative">
-                      <div className="absolute -left-[29px] w-3 h-3 rounded-full bg-blue-500 border-2 border-[#080c14]" />
+                      <div className="absolute -left-[29px] w-3 h-3 rounded-full bg-yellow-500 border-2 border-black" />
                       <p className="text-slate-300 text-sm leading-relaxed">{layer}</p>
                     </div>
                   ))}
@@ -349,7 +349,7 @@ export default async function ProjectPage({
                         href={project.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1.5 transition-colors"
+                        className="text-yellow-400 hover:text-yellow-300 text-sm flex items-center gap-1.5 transition-colors"
                       >
                         <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
@@ -363,14 +363,14 @@ export default async function ProjectPage({
             </div>
 
             {/* CTA Card */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-violet-500/10 border border-blue-500/20">
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-yellow-500/10 to-amber-500/10 border border-yellow-500/20">
               <h3 className="text-base font-bold text-white mb-2">Interested?</h3>
               <p className="text-slate-400 text-sm mb-4">
                 Want to discuss a similar project or collaborate?
               </p>
               <a
                 href="mailto:talhawaheed7807@gmail.com"
-                className="block text-center px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-violet-600 text-white font-semibold text-sm hover:opacity-90 transition-all"
+                className="block text-center px-5 py-2.5 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-semibold text-sm hover:opacity-90 transition-all"
               >
                 Get in Touch
               </a>
@@ -390,13 +390,13 @@ export default async function ProjectPage({
                       <div className="text-4xl">{related.icon}</div>
                     </div>
                     <div className="p-5 flex-1 flex flex-col">
-                      <h3 className="font-bold text-white mb-1.5 group-hover:text-blue-300 transition-colors text-sm">
+                      <h3 className="font-bold text-white mb-1.5 group-hover:text-yellow-300 transition-colors text-sm">
                         {related.title}
                       </h3>
                       <p className="text-slate-500 text-xs leading-relaxed flex-1 mb-4">
                         {related.tagline}
                       </p>
-                      <span className="text-xs text-blue-400 font-semibold flex items-center gap-1">
+                      <span className="text-xs text-yellow-400 font-semibold flex items-center gap-1">
                         View Project
                         <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

@@ -24,8 +24,8 @@ interface Project {
 const CATEGORY_COLORS: Record<string, string> = {
   "GIS & Geospatial": "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
   "Remote Sensing": "bg-orange-500/10 text-orange-400 border-orange-500/20",
-  Frontend: "bg-violet-500/10 text-violet-400 border-violet-500/20",
-  Backend: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+  Frontend: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
+  Backend: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
   "Full Stack": "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
   "Data Science & ML": "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
   "Desktop GIS": "bg-teal-500/10 text-teal-400 border-teal-500/20",
@@ -52,7 +52,7 @@ export default function ProjectList({ projects, categories }: { projects: Projec
               className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 ${
                 isActive
                   ? cat === "All"
-                    ? "bg-blue-500 text-white border-blue-500 shadow-lg shadow-blue-500/20"
+                    ? "bg-yellow-500 text-white border-yellow-500 shadow-lg shadow-yellow-500/20"
                     : CATEGORY_COLORS[cat]?.replace("text-", "bg-").replace(/\/\d+/, "") +
                       " text-white border-transparent shadow-lg object-none shadow-white/10"
                   : CATEGORY_COLORS[cat]
@@ -74,7 +74,7 @@ export default function ProjectList({ projects, categories }: { projects: Projec
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {filteredProjects.map((project) => (
             <Link key={project.slug} href={`/projects/${project.slug}`} className="group">
-              <article className="h-full flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1">
+              <article className="h-full flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-yellow-500/5 hover:-translate-y-1">
                 {/* Card header gradient */}
                 <div className={`h-44 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
                   <div className="text-6xl filter drop-shadow-xl">{project.icon}</div>
@@ -94,7 +94,7 @@ export default function ProjectList({ projects, categories }: { projects: Projec
 
                 {/* Card body */}
                 <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-yellow-300 transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-1">
@@ -116,7 +116,7 @@ export default function ProjectList({ projects, categories }: { projects: Projec
                     )}
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-blue-400 group-hover:text-blue-300 flex items-center gap-1.5 transition-colors">
+                    <span className="text-sm font-semibold text-yellow-400 group-hover:text-yellow-300 flex items-center gap-1.5 transition-colors">
                       View Details
                       <svg
                         className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
