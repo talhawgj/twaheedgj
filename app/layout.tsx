@@ -30,13 +30,35 @@ export const metadata: Metadata = {
     "Talha Waheed GIS",
     "Talha Waheed developer",
     "Talha Waheed portfolio",
+    // High-volume GIS keywords
+    "GIS mapping",
+    "GIS data",
+    "GIS software",
+    "GIS portal",
+    "GIS mapping software",
+    "Web GIS",
+    "Geospatial data",
+    "Geospatial software",
+    "Geospatial analysis",
+    "QGIS",
+    "QGIS desktop",
+    "QGIS download",
+    "ArcGIS",
+    "ArcGIS online",
+    "ArcGIS Pro",
+    "Mapping",
+    "Map data",
+    "Geographic information system",
+    "Geographic information systems",
     // Role-based
     "Full-Stack GIS Developer",
     "GIS Developer Oman",
+    "GIS Developer Pakistan",
     "Spatial Data Engineer",
     "Geospatial Software Engineer",
     "GIS Software Developer",
     "GIS Web Developer",
+    "GIS Application Developer",
     // Tech-specific
     "FastAPI GIS",
     "Mapbox GL JS developer",
@@ -78,7 +100,7 @@ export const metadata: Metadata = {
     siteName: "Talha Waheed — GIS Developer Portfolio",
     title: "Talha Waheed | Full-Stack GIS Developer & Spatial Data Engineer",
     description:
-      "Portfolio of Talha Waheed — building production-grade geospatial applications, coordinate conversion APIs, interactive mapping tools, and remote sensing pipelines.",
+      "Expert in GIS mapping, GIS software development, web GIS applications, and spatial data engineering. Building production-grade geospatial applications, coordinate conversion APIs, interactive mapping tools, QGIS plugins, and remote sensing pipelines.",
     locale: "en_US",
     images: [
       {
@@ -96,7 +118,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Talha Waheed | Full-Stack GIS Developer",
     description:
-      "Building geospatial APIs, interactive maps, and spatial data tools. FastAPI · Mapbox · PostGIS · ArcGIS Pro SDK · Next.js.",
+      "GIS Mapping & Spatial Data Expert. FastAPI GIS APIs · Web GIS Portals · QGIS · ArcGIS Pro · Mapbox · PostGIS. Building geospatial software solutions.",
     images: ["/og-image.svg"],
     creator: "@talhawaheed",
   },

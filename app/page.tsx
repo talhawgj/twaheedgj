@@ -6,9 +6,9 @@ import { projects } from "./data/projects";
 import ProjectList from "./components/ProjectList";
 
 export const metadata: Metadata = {
-  title: "Talha Waheed — Full-Stack GIS Developer & Spatial Data Engineer",
+  title: "Talha Waheed — Full-Stack GIS Developer | GIS Mapping & Spatial Data",
   description:
-    "Portfolio of Talha Waheed, a Full-Stack GIS Developer and Spatial Data Engineer building scalable web applications with satellite imagery, cloud platforms, and advanced spatial analytics.",
+    "Full-Stack GIS Developer & Spatial Data Engineer. Expert in GIS mapping, GIS data analysis, QGIS, ArcGIS, web GIS portals, and geospatial software. Building scalable applications with satellite imagery, cloud platforms, and advanced spatial analytics.",
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -60,9 +60,9 @@ export default function Home() {
           </p>
 
           <p className="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed mb-12">
-            Building scalable applications that bridge the gap between satellite imagery, cloud
-            infrastructure, and the real world — from geodetic conversion APIs to interactive
-            3D terrain viewers.
+            Specializing in GIS mapping, GIS software development, and geospatial data analysis. Building scalable web GIS
+            applications that bridge satellite imagery, cloud infrastructure, and real-world intelligence — from geodetic conversion
+            APIs to interactive GIS portals and 3D terrain visualization.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -142,8 +142,8 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">Technical Arsenal</h2>
             <p className="text-slate-400 max-w-xl mx-auto">
-              A full-stack toolkit spanning geospatial technologies, backend systems, cloud
-              infrastructure, and data science.
+              A full-stack toolkit spanning GIS software, geospatial data technologies, web GIS platforms, cloud
+              infrastructure, and advanced spatial analytics.
             </p>
           </div>
 
@@ -154,7 +154,7 @@ export default function Home() {
                 icon: "🌍",
                 color: "border-emerald-500/30 hover:border-emerald-500/60",
                 glow: "hover:shadow-emerald-500/10",
-                skills: ["PostGIS & PostgreSQL", "Mapbox GL JS / Cesium", "GeoServer", "ArcGIS Pro & QGIS", "Pyproj & GDAL", "GeoPandas & Shapely", "Turf.js", "OSRM"],
+                skills: ["QGIS Desktop & Web GIS", "ArcGIS Pro & Online", "PostGIS & PostgreSQL", "Mapbox GL JS / Cesium", "GeoServer & Web Services", "Pyproj & GDAL", "GeoPandas & Shapely", "OSRM Routing Engine"],
               },
               {
                 cat: "Backend & APIs",
@@ -354,9 +354,9 @@ export default function Home() {
       <section id="projects" className="py-24 px-5 sm:px-8 bg-white/[0.01]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">Featured Projects</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">
-              {projects.length} projects spanning GIS, geospatial APIs, full-stack web, data science, and more.
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">GIS Projects & Geospatial Solutions</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              {projects.length} projects featuring GIS mapping, spatial data analysis, web GIS portals, geospatial software, QGIS tools, ArcGIS integrations, and full-stack applications.
             </p>
           </div>
 
@@ -389,12 +389,12 @@ export default function Home() {
         <div className="relative max-w-4xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl sm:text-6xl font-extrabold text-white mb-6 leading-tight">
-              Let&apos;s Build Something{" "}
-              <span className="gradient-text">Spatial</span>
+              Let&apos;s Build a GIS Solution{" "}
+              <span className="gradient-text">Together</span>
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto">
-              Available for freelance projects, full-time roles, and consulting. Whether
-              it&apos;s a GIS platform, geospatial API, or data pipeline — let&apos;s talk.
+              Available for GIS development, geospatial projects, web GIS applications, spatial data engineering, and consulting. Whether
+              it&apos;s a GIS mapping platform, geospatial API, data pipeline, or custom GIS software — let&apos;s discuss your next project.
             </p>
           </div>
 
@@ -418,12 +418,10 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
               id="whatsapp-contact"
-              className="group p-4 rounded-2xl bg-white/10 hover:bg-green-500 text-white hover:text-black transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50"
+              className="group p-4 rounded-2xl bg-white/10 hover:bg-green-500 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50"
               aria-label="Contact via WhatsApp"
             >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-9.746 9.798c0 2.701.708 5.333 2.055 7.622l-2.207 8.067a9.847 9.847 0 0014.328-14.32 9.868 9.868 0 00-4.426-10.967zm11.234-3.79a11.855 11.855 0 00-8.383-3.487c-6.513 0-11.876 5.363-11.876 11.876 0 2.095.554 4.163 1.604 5.98L1.07 23.93a11.842 11.842 0 005.596 1.425h.005c6.513 0 11.876-5.363 11.876-11.876a11.849 11.849 0 00-3.47-8.38z" />
-              </svg>
+              <img src="/whatsapp.png" alt="WhatsApp" className="w-8 h-8" />
             </a>
 
             {/* GitHub */}
@@ -454,10 +452,54 @@ export default function Home() {
           </div>
 
           <div className="pt-8 border-t border-white/8 text-center text-slate-600 text-sm">
-            © {new Date().getFullYear()} Talha Waheed · Built with Next.js & Tailwind CSS
+            © {new Date().getFullYear()} Talha Waheed · GJ
           </div>
         </div>
       </footer>
+
+      {/* Schema Markup for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Talha Waheed",
+            jobTitle: "Full-Stack GIS Developer & Spatial Data Engineer",
+            url: "https://twaheedgj.vercel.app",
+            sameAs: [
+              "https://github.com/talhawgj",
+              "https://www.linkedin.com/in/talhawgj/",
+              "https://upwork.com/freelancers/talhaw"
+            ],
+            email: "talhawaheed7807@gmail.com",
+            description:
+              "Expert in GIS mapping, GIS software development, geospatial data analysis, web GIS applications, and spatial data engineering. Skilled in QGIS, ArcGIS Pro, PostGIS, GDAL, and full-stack web technologies.",
+            skills: [
+              "GIS Mapping",
+              "Geospatial Data Analysis",
+              "GIS Software Development",
+              "Web GIS",
+              "QGIS",
+              "ArcGIS",
+              "PostGIS",
+              "GDAL",
+              "Spatial Data",
+              "Geospatial APIs",
+              "Full-Stack Development",
+              "Python",
+              "TypeScript",
+              "React",
+              "Next.js"
+            ],
+            knowsLanguage: ["en"],
+            worksFor: {
+              "@type": "Organization",
+              name: "Freelance GIS Development"
+            }
+          })
+        }}
+      />
     </main>
   );
 }
