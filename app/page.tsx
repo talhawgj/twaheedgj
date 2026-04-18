@@ -8,7 +8,7 @@ import ProjectList from "./components/ProjectList";
 export const metadata: Metadata = {
   title: "Talha Waheed — Full-Stack GIS Developer | GIS Mapping & Spatial Data",
   description:
-    "Full-Stack GIS Developer & Spatial Data Engineer. Expert in GIS mapping, GIS data analysis, QGIS, ArcGIS, web GIS portals, and geospatial software. Building scalable applications with satellite imagery, cloud platforms, and advanced spatial analytics.",
+    "Full-Stack GIS Developer specializing in mapping, spatial data, QGIS, ArcGIS Pro, and geospatial APIs for real-world impact.",
 };
 
 const CATEGORY_COLORS: Record<string, string> = {

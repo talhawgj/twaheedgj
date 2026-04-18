@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     template: "%s | Talha Waheed",
   },
 
-  // ── Description (155 chars max) ────────────────────────────────────────────
+  // ── Description (150-160 chars) ─────────────────────────────────────────────
   description:
-    "Talha Waheed is a Full-Stack GIS Developer and Spatial Data Engineer based in Oman, specialising in FastAPI geospatial APIs, Mapbox GL JS, PostGIS, ArcGIS Pro SDK, coordinate conversion tools, remote sensing pipelines, and interactive mapping applications.",
+    "Full-Stack GIS Developer specializing in mapping, spatial data, QGIS, ArcGIS Pro, PostGIS, and geospatial APIs. Building scalable applications.",
 
   // ── Keywords — long-tail + short-tail mix ──────────────────────────────────
   keywords: [
