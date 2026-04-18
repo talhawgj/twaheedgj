@@ -65,3 +65,289 @@ body {
   background: rgba(255, 215, 0, 0.3);
   color: white;
 }
+
+/* ── GIS Animations ──────────────────────────────────────── */
+
+/* Satellite Orbit Animation */
+@keyframes satellite-orbit {
+  0% {
+    transform: rotate(0deg) translateX(160px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(160px) rotate(-360deg);
+  }
+}
+
+.animate-satellite-orbit {
+  transform-origin: 250px 250px;
+  animation: satellite-orbit 10s linear infinite;
+}
+
+/* Footprint Path Animation */
+@keyframes footprint-path {
+  0% {
+    stroke-dashoffset: 350;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+.animate-footprint-path {
+  stroke-dasharray: 350;
+  animation: footprint-path 10s ease-in-out infinite;
+}
+
+/* Track Points Animation */
+@keyframes track-points {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+.animate-track-points {
+  animation: track-points 10s ease-out infinite;
+}
+
+/* Route 1 Animation - Data Flow */
+@keyframes route-1 {
+  0% {
+    stroke-dashoffset: 500;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 500;
+  }
+}
+
+.animate-route-1 {
+  stroke-dasharray: 500;
+  animation: route-1 6s ease-in-out infinite;
+}
+
+/* Route 2 Animation */
+@keyframes route-2 {
+  0% {
+    stroke-dashoffset: 450;
+    opacity: 0.4;
+  }
+  40% {
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+  100% {
+    stroke-dashoffset: 450;
+    opacity: 0.4;
+  }
+}
+
+.animate-route-2 {
+  stroke-dasharray: 450;
+  animation: route-2 7s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Breadcrumbs Animation - Route 1 */
+@keyframes breadcrumbs-1 {
+  0% {
+    transform: translateX(-50px) translateY(50px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(300px) translateY(-50px);
+    opacity: 0;
+  }
+}
+
+.animate-breadcrumbs-1 {
+  animation: breadcrumbs-1 6s ease-in-out infinite;
+}
+
+/* Breadcrumbs Animation - Route 2 */
+@keyframes breadcrumbs-2 {
+  0% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(350px);
+    opacity: 0;
+  }
+}
+
+.animate-breadcrumbs-2 {
+  animation: breadcrumbs-2 7s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Data Points Pulsing */
+.animate-data-points circle {
+  animation: data-pulse 2s ease-in-out infinite;
+}
+
+@keyframes data-pulse {
+  0%, 100% {
+    r: 4px;
+    opacity: 0.9;
+  }
+  50% {
+    r: 6px;
+    opacity: 0.4;
+  }
+}
+
+/* Geo Markers Background */
+@keyframes geo-markers {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.animate-geo-markers {
+  animation: geo-markers 4s ease-in-out infinite;
+}
+
+/* Flow Lines Background */
+@keyframes flow-lines {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}
+
+.animate-flow-lines {
+  animation: flow-lines 8s linear infinite;
+}
+
+/* ── Scroll Reveal Animations ─────────────────────────────── */
+
+/* Fade In + Slide Up Animation */
+@keyframes scroll-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal-item {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.scroll-reveal-item.scroll-revealed {
+  animation: scroll-fade-up 0.8s ease-out forwards;
+}
+
+/* Stagger reveal for list items */
+.scroll-reveal-stagger-item {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.scroll-reveal-stagger-item.scroll-revealed {
+  animation: scroll-fade-up 0.8s ease-out forwards;
+}
+
+/* Fade In Only */
+@keyframes scroll-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.scroll-fade-in {
+  opacity: 0;
+}
+
+.scroll-fade-in.scroll-revealed {
+  animation: scroll-fade-in 0.8s ease-out forwards;
+}
+
+/* Slide In from Left */
+@keyframes scroll-slide-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.scroll-slide-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.scroll-slide-left.scroll-revealed {
+  animation: scroll-slide-left 0.8s ease-out forwards;
+}
+
+/* Scale In */
+@keyframes scroll-scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scroll-scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.scroll-scale-in.scroll-revealed {
+  animation: scroll-scale-in 0.8s ease-out forwards;
+}
+

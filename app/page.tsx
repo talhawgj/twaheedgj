@@ -1,14 +1,49 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Script from "next/script";
 import Logo from "./components/Logo";
 import NavBar from "./components/NavBar";
 import { projects } from "./data/projects";
 import ProjectList from "./components/ProjectList";
+import {
+  RippleEffect,
+  CursorGlow,
+  MouseTracker,
+  GlowText,
+} from "./components/InteractiveEffects";
+import {
+  SatelliteOrbitAnimation,
+  DataFlowMapAnimation,
+  BackgroundGISAnimation,
+} from "./components/GISVisualizations";
+import { ScrollReveal, ScrollRevealStagger } from "./components/ScrollReveal";
+import { AnimatedCard } from "./components/AnimatedCard";
 
 export const metadata: Metadata = {
   title: "Talha Waheed — Full-Stack GIS Developer | GIS Mapping & Spatial Data",
   description:
-    "Full-Stack GIS Developer specializing in mapping, spatial data, QGIS, ArcGIS Pro, and geospatial APIs for real-world impact.",
+    "Full-Stack GIS Developer specializing in mapping, spatial data, QGIS, ArcGIS Pro, and geospatial APIs for real-world impact. Explore portfolio of 5+ GIS projects.",
+  openGraph: {
+    title: "Talha Waheed | Full-Stack GIS Developer",
+    description:
+      "Full-Stack GIS Developer specializing in geospatial APIs, coordinate conversion, web GIS portals, and spatial data engineering.",
+    url: "https://twaheedgj.vercel.app",
+    type: "website",
+    images: [
+      {
+        url: "https://twaheedgj.vercel.app/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "Talha Waheed Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Talha Waheed | GIS Developer",
+    description:
+      "Full-Stack GIS Developer. Geospatial APIs, Web GIS, Coordinate Conversion, Remote Sensing.",
+  },
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -25,15 +60,48 @@ const CATEGORY_COLORS: Record<string, string> = {
 export default function Home() {
   const categories = Array.from(new Set(projects.map((p) => p.category)));
 
+  // ─── JSON-LD Schemas ───────────────────────────────────────────────────────
+  const projectCollectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "GIS Projects Portfolio",
+    description:
+      "A comprehensive portfolio of GIS development projects by Talha Waheed, showcasing expertise in geospatial software, web mapping, and spatial data engineering.",
+    url: "https://twaheedgj.vercel.app",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: projects.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: project.title,
+        description: project.description,
+        url: `https://twaheedgj.vercel.app/projects/${project.slug}`,
+        image: `https://twaheedgj.vercel.app/og-image.svg`,
+      })),
+    },
+  };
+
   return (
-    <main className="min-h-screen bg-black text-white">
-      <NavBar />
+    <>
+      <Script
+        id="project-collection-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectCollectionSchema) }}
+        strategy="afterInteractive"
+      />
+      
+      <RippleEffect />
+      <CursorGlow />
+      <BackgroundGISAnimation />
+
+      <main className="min-h-screen bg-black text-white">
+        <NavBar />
 
 
       {/* ─── Hero ────────────────────────────────────────────── */}
       <section
         id="about"
-        className="relative min-h-[100svh] flex flex-col items-center justify-center text-center px-5 sm:px-8 pt-24 pb-20 overflow-hidden"
+        className="relative min-h-[100svh] flex flex-col items-center justify-center text-center px-5 sm:px-8 pt-24 pb-20 overflow-hidden bg-gradient-to-b from-black via-black to-yellow-600/5"
       >
         {/* Ambient glow */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -44,16 +112,27 @@ export default function Home() {
         {/* Grid overlay */}
         <div className="absolute inset-0 hero-grid opacity-[0.03] pointer-events-none" aria-hidden="true" />
 
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 max-w-5xl mx-auto">
+          {/* Satellite Orbit Animation - Behind Text */}
+          <div className="absolute inset-0 -z-10 flex justify-center items-center pointer-events-none">
+            <div className="w-full max-w-3xl">
+              <SatelliteOrbitAnimation />
+            </div>
+          </div>
+
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-slate-400 mb-8 backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             Available for new projects
           </div>
 
-          <h1 className="text-6xl sm:text-8xl font-extrabold tracking-tight mb-6 leading-none">
-            <span className="block text-white">Talha</span>
-            <span className="block gradient-text">Waheed</span>
-          </h1>
+          <MouseTracker>
+            <GlowText className="text-6xl sm:text-8xl font-extrabold tracking-tight mb-6 leading-none">
+              <h1>
+                <span className="block text-white">Talha</span>
+                <span className="block gradient-text">Waheed</span>
+              </h1>
+            </GlowText>
+          </MouseTracker>
 
           <p className="text-lg sm:text-2xl text-yellow-400 font-semibold mb-5 tracking-wide uppercase text-sm">
             Full-Stack GIS Developer & Spatial Data Engineer
@@ -120,8 +199,9 @@ export default function Home() {
       </section>
 
       {/* ─── Stats ───────────────────────────────────────────── */}
-      <section className="py-16 px-5 sm:px-8 border-y border-white/5 bg-white/[0.02]">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+      <ScrollReveal>
+        <section className="relative py-16 px-5 sm:px-8 border-y border-white/5 bg-white/[0.02]">
+          <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
           {[
             { value: `${projects.length}+`, label: "GitHub Projects" },
             { value: "3+", label: "Years Experience" },
@@ -133,11 +213,18 @@ export default function Home() {
               <div className="text-slate-500 text-sm font-medium">{stat.label}</div>
             </div>
           ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      </ScrollReveal>
 
       {/* ─── Skills ──────────────────────────────────────────── */}
-      <section id="skills" className="py-24 px-5 sm:px-8">
+      <ScrollReveal>
+        <section id="skills" className="relative py-24 px-5 sm:px-8 overflow-hidden">
+        {/* Data Flow Map Animation Background */}
+        <div className="absolute inset-0 -z-10 flex items-center justify-center opacity-30 pointer-events-none">
+          <DataFlowMapAnimation />
+        </div>
+
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">Technical Arsenal</h2>
@@ -170,16 +257,10 @@ export default function Home() {
                 glow: "hover:shadow-yellow-500/10",
                 skills: ["Next.js 16 / React 19", "TypeScript", "Tailwind CSS", "Recharts & D3", "Mapbox GL JS", "Framer Motion", "Material-UI", "Vite"],
               },
-              {
-                cat: "Data Science & Cloud",
-                icon: "🧠",
-                color: "border-yellow-500/30 hover:border-yellow-500/60",
-                glow: "hover:shadow-yellow-500/10",
-                skills: ["Python & Pandas", "Scikit-learn", "Google Earth Engine", "Rasterio", "AWS S3 / EC2", "Firebase", "Sentinel Hub API", "Selenium Web Scraping"],
-              },
-            ].map((category) => (
-              <div
+            ].map((category, index) => (
+              <AnimatedCard
                 key={category.cat}
+                index={index}
                 className={`p-6 rounded-2xl bg-white/[0.03] border ${category.color} transition-all duration-300 shadow-xl ${category.glow}`}
               >
                 <div className="text-3xl mb-4">{category.icon}</div>
@@ -192,13 +273,32 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </AnimatedCard>
             ))}
+
+            {/* Data Science & ML card simplified */}
+            <AnimatedCard
+              index={3}
+              className="p-6 rounded-2xl bg-white/[0.03] border border-yellow-500/30 hover:border-yellow-500/60 transition-all duration-300 shadow-xl hover:shadow-yellow-500/10"
+            >
+              <div className="text-3xl mb-4">🧠</div>
+              <h3 className="text-base font-bold text-white mb-5">Data Science & ML</h3>
+              <ul className="space-y-2.5">
+                {["Python & Pandas", "Scikit-learn", "Google Earth Engine", "Rasterio", "AWS S3 / EC2", "Firebase", "Sentinel Hub API", "Selenium Web Scraping"].map((skill) => (
+                  <li key={skill} className="flex items-center gap-2.5 text-sm text-slate-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 flex-shrink-0" />
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </AnimatedCard>
           </div>
         </div>
-      </section>
+        </section>
+      </ScrollReveal>
 
       {/* ─── Certifications ──────────────────────────────────── */}
+      <ScrollReveal>
       <section id="certifications" className="py-24 px-5 sm:px-8 border-y border-white/5 bg-white/[0.015]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
@@ -212,7 +312,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
             {/* Applied Data Science Lab */}
-            <div className="group relative flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1">
+            <AnimatedCard index={0} className="group relative flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1">
               <div className="h-1.5 w-full bg-gradient-to-r from-blue-500 via-violet-500 to-purple-600" />
               <div className="p-7 flex flex-col flex-1">
                 <div className="flex items-center gap-3 mb-6">
@@ -243,10 +343,10 @@ export default function Home() {
                   Verify on Credly
                 </a>
               </div>
-            </div>
+            </AnimatedCard>
 
             {/* Google Data Analytics */}
-            <div className="group relative flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1">
+            <AnimatedCard index={1} className="group relative flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1">
               <div className="h-1.5 w-full bg-gradient-to-r from-yellow-400 via-green-400 to-blue-500" />
               <div className="p-7 flex flex-col flex-1">
                 <div className="flex items-center gap-3 mb-6">
@@ -280,77 +380,81 @@ export default function Home() {
                   Verify on Credly
                 </a>
               </div>
-            </div>
+            </AnimatedCard>
 
             {/* Tableau BI Analyst */}
-            <a href="https://coursera.org/share/06f89c9b2306cb35c73f71e49941a216" target="_blank" rel="noreferrer" id="cert-tableau"
-              className="group flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1">
-              <div className="h-1.5 w-full bg-gradient-to-r from-sky-400 to-blue-600" />
-              <div className="p-7 flex flex-col flex-1">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500/20 to-blue-600/20 border border-white/10 flex items-center justify-center text-xl flex-shrink-0">📊</div>
-                  <div>
-                    <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">Tableau · Specialization</div>
-                    <div className="text-sm font-semibold text-slate-300">Coursera</div>
+            <AnimatedCard index={2}>
+              <a href="https://coursera.org/share/06f89c9b2306cb35c73f71e49941a216" target="_blank" rel="noreferrer" id="cert-tableau"
+                className="group flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1 h-full">
+                <div className="h-1.5 w-full bg-gradient-to-r from-sky-400 to-blue-600" />
+                <div className="p-7 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500/20 to-blue-600/20 border border-white/10 flex items-center justify-center text-xl flex-shrink-0">📊</div>
+                    <div>
+                      <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">Tableau · Specialization</div>
+                      <div className="text-sm font-semibold text-slate-300">Coursera</div>
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-4 group-hover:text-sky-300 transition-colors">Tableau Business Intelligence Analyst</h3>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {["Tableau Desktop", "Data Visualisation", "BI Dashboards", "Data Analysis"].map(s => (
+                      <span key={s} className="px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs font-medium">{s}</span>
+                    ))}
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-4 group-hover:text-sky-300 transition-colors">Tableau Business Intelligence Analyst</h3>
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {["Tableau Desktop", "Data Visualisation", "BI Dashboards", "Data Analysis"].map(s => (
-                    <span key={s} className="px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs font-medium">{s}</span>
-                  ))}
-                </div>
-              </div>
-            </a>
+              </a>
+            </AnimatedCard>
 
             {/* Machine Learning — Stanford & DeepLearning.AI */}
-            <a href="https://coursera.org/share/3c4efb3607992bc92b8ed96ad6315803" target="_blank" rel="noreferrer" id="cert-ml-stanford"
-              className="group flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1">
-              <div className="h-1.5 w-full bg-gradient-to-r from-red-500 to-orange-500" />
-              <div className="p-7 flex flex-col flex-1">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/20 to-orange-500/20 border border-white/10 flex items-center justify-center text-xl flex-shrink-0">🤖</div>
-                  <div>
-                    <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">Stanford & DeepLearning.AI · Specialization</div>
-                    <div className="text-sm font-semibold text-slate-300">Coursera</div>
+            <AnimatedCard index={3}>
+              <a href="https://coursera.org/share/3c4efb3607992bc92b8ed96ad6315803" target="_blank" rel="noreferrer" id="cert-ml-stanford"
+                className="group flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1 h-full">
+                <div className="h-1.5 w-full bg-gradient-to-r from-red-500 to-orange-500" />
+                <div className="p-7 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/20 to-orange-500/20 border border-white/10 flex items-center justify-center text-xl flex-shrink-0">🤖</div>
+                    <div>
+                      <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">Stanford & DeepLearning.AI · Specialization</div>
+                      <div className="text-sm font-semibold text-slate-300">Coursera</div>
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-4 group-hover:text-orange-300 transition-colors">Machine Learning Specialization</h3>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {["Supervised ML", "Neural Networks", "Decision Trees", "Recommender Systems"].map(s => (
+                      <span key={s} className="px-2.5 py-1 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-300 text-xs font-medium">{s}</span>
+                    ))}
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-4 group-hover:text-orange-300 transition-colors">Machine Learning Specialization</h3>
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {["Supervised ML", "Neural Networks", "Decision Trees", "Recommender Systems"].map(s => (
-                    <span key={s} className="px-2.5 py-1 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-300 text-xs font-medium">{s}</span>
-                  ))}
-                </div>
-              </div>
-            </a>
+              </a>
+            </AnimatedCard>
 
             {/* Microsoft Python Development */}
-            <a href="https://coursera.org/share/f0d9604ec8029e01b47a7da7e9a43f82" target="_blank" rel="noreferrer" id="cert-ms-python"
-              className="group flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1 md:col-span-2">
-              <div className="h-1.5 w-full bg-gradient-to-r from-blue-500 to-cyan-400" />
-              <div className="p-7 flex flex-col sm:flex-row sm:items-center gap-5">
-                <div className="flex items-center gap-3 sm:flex-shrink-0">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-white/10 flex items-center justify-center text-xl">🐍</div>
-                  <div>
-                    <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">Microsoft · Specialization</div>
-                    <div className="text-sm font-semibold text-slate-300">Coursera</div>
+            <AnimatedCard index={4} className="md:col-span-2">
+              <a href="https://coursera.org/share/f0d9604ec8029e01b47a7da7e9a43f82" target="_blank" rel="noreferrer" id="cert-ms-python"
+                className="group flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-1 h-full">
+                <div className="h-1.5 w-full bg-gradient-to-r from-blue-500 to-cyan-400" />
+                <div className="p-7 flex flex-col lg:flex-row lg:items-center gap-5">
+                  <div className="flex items-center gap-3 lg:flex-shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-white/10 flex items-center justify-center text-xl">🐍</div>
+                    <div>
+                      <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">Microsoft · Specialization</div>
+                      <div className="text-sm font-semibold text-slate-300">Coursera</div>
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors lg:flex-1">Microsoft Python Development</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {["Python", "Data Analysis", "Visualisation", "OOP"].map(s => (
+                      <span key={s} className="px-2.5 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-medium">{s}</span>
+                    ))}
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors sm:mx-4">Microsoft Python Development</h3>
-                <div className="flex flex-wrap gap-2 sm:ml-auto">
-                  {["Python", "Data Analysis", "Visualisation", "OOP"].map(s => (
-                    <span key={s} className="px-2.5 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-medium">{s}</span>
-                  ))}
-                </div>
-              </div>
-            </a>
-
+              </a>
+            </AnimatedCard>
           </div>
         </div>
       </section>
-
-
-      {/* ─── Projects ────────────────────────────────────────── */}
+      </ScrollReveal>
+      <ScrollReveal>
       <section id="projects" className="py-24 px-5 sm:px-8 bg-white/[0.01]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -377,9 +481,11 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </section>
+        </section>
+      </ScrollReveal>
 
-      {/* ─── Contact ─────────────────────────────────────────── */}
+      {/* ─── Contact ────────────────────────────────────────────── */}
+      <ScrollReveal>
       <footer id="contact" className="py-28 px-5 sm:px-8 relative overflow-hidden">
         {/* Glow */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -456,6 +562,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      </ScrollReveal>
 
       {/* Schema Markup for SEO */}
       <script
@@ -501,5 +608,6 @@ export default function Home() {
         }}
       />
     </main>
+    </>
   );
 }

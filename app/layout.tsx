@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 import "./globals.css";
 
 const BASE_URL = "https://twaheedgj.vercel.app";
@@ -144,18 +145,51 @@ export const metadata: Metadata = {
   // ── App / PWA hints ────────────────────────────────────────────────────────
   applicationName: "Talha Waheed Portfolio",
   category: "technology",
+
+  // ── Additional SEO fields ──────────────────────────────────────────────────
+  referrer: "strict-origin-when-cross-origin",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/manifest.json",
+
+  // ── Geo tags ──────────────────────────────────────────────────────────────
+  other: {
+    "geo.placename": "Pakistan",
+    "geo.region": "PK",
+    ICBM: "24.8607, 67.0011", // Karachi coordinates
+  },
 };
 
 // ─── JSON-LD Structured data ──────────────────────────────────────────────────
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${BASE_URL}/#person`,
   name: "Talha Waheed",
   url: BASE_URL,
-  image: `${BASE_URL}/og-image.png`,
-  jobTitle: "Full-Stack GIS Developer & Spatial Data Engineer",
+  image: {
+    "@type": "ImageObject",
+    url: `${BASE_URL}/og-image.svg`,
+    width: 1200,
+    height: 630,
+  },
+  jobTitle: [
+    "Full-Stack GIS Developer",
+    "Spatial Data Engineer",
+    "Geospatial Software Engineer"
+  ],
   description:
-    "Talha Waheed is a Full-Stack GIS Developer specialising in geospatial APIs, coordinate conversion, interactive mapping, remote sensing, and ArcGIS Pro SDK customization.",
+    "Full-Stack GIS Developer specializing in geospatial APIs, coordinate conversion systems, interactive web mapping, remote sensing pipelines, ArcGIS Pro SDK customization, and PostGIS database engineering.",
   knowsAbout: [
     "GIS Development",
     "Geospatial APIs",
@@ -170,31 +204,93 @@ const personSchema = {
     "TypeScript",
     "Next.js",
     "Spatial Data Engineering",
+    "Web GIS",
+    "Vector Tiles",
+    "Geospatial Analysis"
   ],
   alumniOf: [
-    { "@type": "Organization", name: "WorldQuant University" },
-    { "@type": "Organization", name: "Google (Coursera)" },
+    { "@type": "Organization", name: "WorldQuant University", url: "https://wqu.edu" },
+    { "@type": "Organization", name: "Google Cloud" },
+    { "@type": "Organization", name: "Coursera", url: "https://coursera.org" },
   ],
   sameAs: [
     "https://github.com/talhawgj",
     "https://www.linkedin.com/in/talha-waheed",
     "https://upwork.com/freelancers/talhaw",
   ],
+  affiliation: {
+    "@type": "Organization",
+    name: "Self-employed GIS Developer",
+  },
+  homeLocation: {
+    "@type": "City",
+    name: "Karachi",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "PK"
+    }
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${BASE_URL}/#organization`,
+  name: "Talha Waheed — GIS Developer",
+  url: BASE_URL,
+  logo: {
+    "@type": "ImageObject",
+    url: `${BASE_URL}/og-image.svg`,
+    width: 1200,
+    height: 630,
+  },
+  description:
+    "Portfolio and services of Talha Waheed, a Full-Stack GIS Developer offering geospatial API development, web GIS solutions, and spatial data engineering.",
+  sameAs: [
+    "https://github.com/talhawgj",
+    "https://www.linkedin.com/in/talha-waheed",
+    "https://upwork.com/freelancers/talhaw",
+  ],
+  founder: {
+    "@type": "Person",
+    name: "Talha Waheed"
+  },
+  foundingDate: "2023",
+  areaServed: ["PK", "GB", "US", "AE"],
+  serviceType: [
+    "Geospatial Software Development",
+    "GIS Application Development",
+    "Web GIS Portal Development",
+    "Coordinate Conversion API",
+    "Remote Sensing Solution",
+    "Spatial Data Engineering"
+  ],
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${BASE_URL}/#website`,
   url: BASE_URL,
   name: "Talha Waheed | GIS Developer Portfolio",
   description:
-    "Portfolio of Talha Waheed — Full-Stack GIS Developer & Spatial Data Engineer.",
+    "Portfolio of Talha Waheed — Full-Stack GIS Developer & Spatial Data Engineer showcasing GIS projects, web mapping applications, and geospatial solutions.",
   author: { "@type": "Person", name: "Talha Waheed" },
+  creator: { "@type": "Person", name: "Talha Waheed" },
+  publisher: {
+    "@type": "Person",
+    name: "Talha Waheed"
+  },
+  isPartOf: {
+    "@type": "Organization",
+    name: "Talha Waheed — GIS Developer"
+  },
+  inLanguage: "en-US",
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: `${BASE_URL}/projects/{search_term_string}`,
+      urlTemplate: `${BASE_URL}/projects?search={search_term_string}`,
     },
     "query-input": "required name=search_term_string",
   },
@@ -215,11 +311,20 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        {/* JSON-LD: Organization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         {/* JSON-LD: WebSite */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+        {/* Preconnect to external resources for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
         {/* Microsoft Clarity Analytics */}
         <script
           dangerouslySetInnerHTML={{

@@ -1,9 +1,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
+import Script from "next/script";
 import Logo from "../../components/Logo";
 import ProjectPageClient from "../../components/ProjectPageClient";
 import { projects, getProjectBySlug } from "../../data/projects";
+import { generateBreadcrumbSchema, generateProjectSchema } from "../../lib/seo-schemas";
 
 // ─── Static generation ───────────────────────────────────────────────────────
 export async function generateStaticParams() {
