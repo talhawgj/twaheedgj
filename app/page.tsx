@@ -36,13 +36,13 @@ export default function Home() {
         className="relative min-h-[100svh] flex flex-col items-center justify-center text-center px-5 sm:px-8 pt-24 pb-20 overflow-hidden"
       >
         {/* Ambient glow */}
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-blue-600/10 blur-[120px]" />
           <div className="absolute top-1/3 left-1/3 w-[400px] h-[400px] rounded-full bg-violet-600/8 blur-[100px]" />
         </div>
 
         {/* Grid overlay */}
-        <div className="absolute inset-0 hero-grid opacity-[0.03] pointer-events-none" />
+        <div className="absolute inset-0 hero-grid opacity-[0.03] pointer-events-none" aria-hidden="true" />
 
         <div className="relative z-10 max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-slate-400 mb-8 backdrop-blur-sm">
@@ -382,7 +382,7 @@ export default function Home() {
       {/* ─── Contact ─────────────────────────────────────────── */}
       <footer id="contact" className="py-28 px-5 sm:px-8 relative overflow-hidden">
         {/* Glow */}
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-blue-600/10 blur-[100px]" />
         </div>
 

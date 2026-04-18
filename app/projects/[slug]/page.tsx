@@ -175,7 +175,7 @@ export default async function ProjectPage({
         {/* Glass overlay */}
         <div className="absolute inset-0 bg-[#080c14]/60 backdrop-blur-[2px]" />
         {/* Ambient light blobs */}
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-0 right-1/4 w-[500px] h-[300px] rounded-full bg-white/5 blur-[80px]" />
           <div className="absolute bottom-0 left-1/4 w-[400px] h-[200px] rounded-full bg-black/20 blur-[60px]" />
         </div>
