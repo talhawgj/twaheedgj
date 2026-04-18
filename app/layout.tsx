@@ -82,11 +82,11 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Talha Waheed — Full-Stack GIS Developer Portfolio",
-        type: "image/png",
+        type: "image/svg+xml",
       },
     ],
   },
@@ -97,7 +97,7 @@ export const metadata: Metadata = {
     title: "Talha Waheed | Full-Stack GIS Developer",
     description:
       "Building geospatial APIs, interactive maps, and spatial data tools. FastAPI · Mapbox · PostGIS · ArcGIS Pro SDK · Next.js.",
-    images: ["/og-image.png"],
+    images: ["/og-image.svg"],
     creator: "@talhawaheed",
   },
 
