@@ -202,4 +202,4 @@ Built with:
 
 ---
 
-**Last Updated**: April 2025 | **Current Location**: Oman/Pakistan
+**Last Updated**: April 2025 | **Current Location**: Islamabad.Pakistan
