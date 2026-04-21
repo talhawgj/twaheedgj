@@ -78,10 +78,8 @@ I'm a **Full-Stack GIS Developer** specializing in geospatial software developme
 
 ## 📈 Key Achievements
 
-✅ **5+ production GIS applications** deployed and actively used  
+✅ **5+ production GIS applications**
 ✅ **3+ years** of specialized geospatial development  
-✅ **Multiple clients** across surveying, environmental, and urban planning sectors  
-✅ **Open-source contributions** to geospatial tooling  
 ✅ **Full-stack capability** from backend APIs to interactive web UIs  
 
 ---
