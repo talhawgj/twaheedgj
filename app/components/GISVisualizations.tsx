@@ -8,8 +8,8 @@ export function SatelliteOrbitAnimation() {
     <div className="relative w-full h-[500px] mx-auto">
       <svg
         viewBox="0 0 500 500"
-        className="w-full h-full drop-shadow-2xl"
-        style={{ filter: "drop-shadow(0 0 60px rgba(255, 215, 0, 0.4))" }}
+        className="w-full h-full"
+        style={{ containment: "layout style paint" }}
       >
         <defs>
           <radialGradient id="earthGradient" cx="35%" cy="35%">
@@ -91,19 +91,12 @@ export function SatelliteOrbitAnimation() {
 export function DataFlowMapAnimation() {
   return (
     <div className="relative w-full h-80 bg-gradient-to-b from-black via-emerald-950/20 to-black rounded-lg overflow-hidden border border-yellow-500/20">
-      <svg viewBox="0 0 600 300" className="w-full h-full" preserveAspectRatio="none">
+      <svg viewBox="0 0 600 300" className="w-full h-full" preserveAspectRatio="none" style={{ containment: "layout style paint" }}>
         <defs>
           <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="rgba(255, 215, 0, 0.8)" />
             <stop offset="100%" stopColor="rgba(16, 185, 129, 0.6)" />
           </linearGradient>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
         </defs>
 
         {/* Route 1 - GPS Trail */}
@@ -113,7 +106,6 @@ export function DataFlowMapAnimation() {
             fill="none"
             stroke="url(#routeGradient)"
             strokeWidth="3"
-            filter="url(#glow)"
           />
         </g>
 
@@ -174,7 +166,7 @@ export function DataFlowMapAnimation() {
 export function BackgroundGISAnimation() {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" style={{ containment: "layout style paint" }}>
         <defs>
           <pattern id="mapGrid" x="100" y="100" width="100" height="100" patternUnits="userSpaceOnUse">
             <path
@@ -184,9 +176,6 @@ export function BackgroundGISAnimation() {
               strokeWidth="1"
             />
           </pattern>
-          <filter id="backgroundGlow">
-            <feGaussianBlur stdDeviation="3" />
-          </filter>
         </defs>
 
         {/* Background grid */}

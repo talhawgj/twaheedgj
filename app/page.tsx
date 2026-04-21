@@ -1,23 +1,34 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import Logo from "./components/Logo";
 import NavBar from "./components/NavBar";
 import { projects } from "./data/projects";
 import ProjectList from "./components/ProjectList";
 import {
-  RippleEffect,
-  CursorGlow,
   MouseTracker,
   GlowText,
 } from "./components/InteractiveEffects";
 import {
   SatelliteOrbitAnimation,
   DataFlowMapAnimation,
-  BackgroundGISAnimation,
 } from "./components/GISVisualizations";
 import { ScrollReveal, ScrollRevealStagger } from "./components/ScrollReveal";
 import { AnimatedCard } from "./components/AnimatedCard";
+
+// Lazy load expensive animation components
+const RippleEffect = dynamic(() => import("./components/InteractiveEffects").then(mod => ({ default: mod.RippleEffect })), {
+  loading: () => null,
+});
+
+const CursorGlow = dynamic(() => import("./components/InteractiveEffects").then(mod => ({ default: mod.CursorGlow })), {
+  loading: () => null,
+});
+
+const BackgroundGISAnimation = dynamic(() => import("./components/GISVisualizations").then(mod => ({ default: mod.BackgroundGISAnimation })), {
+  loading: () => null,
+});
 
 export const metadata: Metadata = {
   title: "Talha Waheed — Full-Stack GIS Developer | GIS Mapping & Spatial Data",

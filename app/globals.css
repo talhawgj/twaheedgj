@@ -81,6 +81,7 @@ body {
 .animate-satellite-orbit {
   transform-origin: 250px 250px;
   animation: satellite-orbit 10s linear infinite;
+  will-change: transform;
 }
 
 /* Footprint Path Animation */
@@ -104,6 +105,7 @@ body {
 .animate-footprint-path {
   stroke-dasharray: 350;
   animation: footprint-path 10s ease-in-out infinite;
+  will-change: opacity;
 }
 
 /* Track Points Animation */
@@ -124,6 +126,7 @@ body {
 
 .animate-track-points {
   animation: track-points 10s ease-out infinite;
+  will-change: opacity, transform;
 }
 
 /* Route 1 Animation - Data Flow */
@@ -142,6 +145,7 @@ body {
 .animate-route-1 {
   stroke-dasharray: 500;
   animation: route-1 6s ease-in-out infinite;
+  will-change: stroke-dashoffset;
 }
 
 /* Route 2 Animation */
@@ -164,6 +168,7 @@ body {
   stroke-dasharray: 450;
   animation: route-2 7s ease-in-out infinite;
   animation-delay: 1s;
+  will-change: stroke-dashoffset, opacity;
 }
 
 /* Breadcrumbs Animation - Route 1 */
@@ -186,6 +191,7 @@ body {
 
 .animate-breadcrumbs-1 {
   animation: breadcrumbs-1 6s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 /* Breadcrumbs Animation - Route 2 */
@@ -209,6 +215,7 @@ body {
 .animate-breadcrumbs-2 {
   animation: breadcrumbs-2 7s ease-in-out infinite;
   animation-delay: 1s;
+  will-change: transform, opacity;
 }
 
 /* Data Points Pulsing */
@@ -242,6 +249,7 @@ body {
 
 .animate-geo-markers {
   animation: geo-markers 4s ease-in-out infinite;
+  will-change: opacity;
 }
 
 /* Flow Lines Background */
@@ -256,6 +264,7 @@ body {
 
 .animate-flow-lines {
   animation: flow-lines 8s linear infinite;
+  will-change: transform;
 }
 
 /* ── Scroll Reveal Animations ─────────────────────────────── */

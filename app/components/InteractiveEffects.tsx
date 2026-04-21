@@ -2,6 +2,27 @@
 
 import { useEffect, useRef, useState } from "react";
 
+// Throttle utility for performance
+const throttle = (callback: Function, limit: number) => {
+  let inThrottle: boolean;
+  return function (this: any, ...args: any[]) {
+    if (!inThrottle) {
+      callback.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+};
+
+// Debounce utility for performance
+const debounce = (callback: Function, delay: number) => {
+  let timeoutId: NodeJS.Timeout;
+  return function (this: any, ...args: any[]) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, args), delay);
+  };
+};
+
 export function RippleEffect() {
   const [particles, setParticles] = useState<
     Array<{
@@ -55,7 +76,7 @@ export function RippleEffect() {
       {particles.map((particle) => (
         <div
           key={particle.id}
-          className="fixed pointer-events-none w-5 h-5 rounded-full bg-yellow-400"
+          className="fixed pointer-events-none w-5 h-5 rounded-full bg-yellow-400 will-change-transform"
           style={{
             left: `${particle.x}px`,
             top: `${particle.y}px`,
@@ -68,15 +89,15 @@ export function RippleEffect() {
       <style>{`
         @keyframes burst-star {
           0% {
-            opacity: 3;
+            opacity: 1;
             box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
             transform: translate(0, 0) scale(1);
           }
           50% {
-            opacity: 5;
+            opacity: 0.8;
           }
           100% {
-            opacity: 5;
+            opacity: 0;
             box-shadow: 0 0 0 rgba(255, 215, 0, 0);
             transform: translate(var(--tx), var(--ty)) scale(0.3);
           }
@@ -90,23 +111,33 @@ export function MouseTracker({ children }: { children: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isInside, setIsInside] = useState(false);
+  const rafRef = useRef<number>();
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    let pendingPos = { x: 0, y: 0 };
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20; // -10 to 10
       const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20; // -10 to 10
 
-      setMousePos({ x, y });
+      pendingPos = { x, y };
+
+      // Use RAF to batch updates
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        setMousePos(pendingPos);
+      });
     };
 
     const handleMouseEnter = () => setIsInside(true);
     const handleMouseLeave = () => {
       setIsInside(false);
       setMousePos({ x: 0, y: 0 });
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
 
     container.addEventListener("mousemove", handleMouseMove);
@@ -117,6 +148,7 @@ export function MouseTracker({ children }: { children: React.ReactNode }) {
       container.removeEventListener("mousemove", handleMouseMove);
       container.removeEventListener("mouseenter", handleMouseEnter);
       container.removeEventListener("mouseleave", handleMouseLeave);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
@@ -132,6 +164,7 @@ export function MouseTracker({ children }: { children: React.ReactNode }) {
           transform: isInside ? `rotateX(${mousePos.y}deg) rotateY(${-mousePos.x}deg)` : "rotateX(0) rotateY(0)",
           transition: isInside ? "none" : "transform 0.3s ease-out",
           transformStyle: "preserve-3d",
+          willChange: isInside ? "transform" : "auto",
         }}
       >
         {children}
@@ -143,14 +176,26 @@ export function MouseTracker({ children }: { children: React.ReactNode }) {
 export function CursorGlow() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const rafRef = useRef<number>();
 
   useEffect(() => {
+    let pendingPos = { x: 0, y: 0 };
+
     const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-      setIsVisible(true);
+      pendingPos = { x: e.clientX, y: e.clientY };
+
+      // Use RAF to throttle updates
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        setPosition(pendingPos);
+        setIsVisible(true);
+      });
     };
 
-    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseLeave = () => {
+      setIsVisible(false);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
 
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseleave", handleMouseLeave);
@@ -158,12 +203,13 @@ export function CursorGlow() {
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
   return (
     <div
-      className="fixed w-32 h-32 rounded-full pointer-events-none mix-blend-screen"
+      className="fixed w-32 h-32 rounded-full pointer-events-none mix-blend-screen will-change-transform"
       style={{
         left: `${position.x - 64}px`,
         top: `${position.y - 64}px`,
@@ -189,8 +235,11 @@ export function ButtonRipple() {
 export function GlowText({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const textRef = useRef<HTMLDivElement>(null);
   const [glowColor, setGlowColor] = useState("rgba(255, 215, 0, 0)");
+  const rafRef = useRef<number>();
 
   useEffect(() => {
+    let pendingColor = "rgba(255, 215, 0, 0)";
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!textRef.current) return;
 
@@ -203,11 +252,20 @@ export function GlowText({ children, className = "" }: { children: React.ReactNo
       const maxDistance = Math.sqrt(Math.pow(rect.width / 2, 2) + Math.pow(rect.height / 2, 2));
       const intensity = Math.max(0, 1 - distance / maxDistance);
 
-      setGlowColor(`rgba(255, 215, 0, ${intensity * 0.6})`);
+      pendingColor = `rgba(255, 215, 0, ${intensity * 0.6})`;
+
+      // Use RAF to throttle updates
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        setGlowColor(pendingColor);
+      });
     };
 
     document.addEventListener("mousemove", handleMouseMove);
-    return () => document.removeEventListener("mousemove", handleMouseMove);
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (
@@ -216,6 +274,7 @@ export function GlowText({ children, className = "" }: { children: React.ReactNo
       className={className}
       style={{
         textShadow: `0 0 20px ${glowColor}, 0 0 40px ${glowColor}`,
+        willChange: "text-shadow",
       }}
     >
       {children}
@@ -226,8 +285,11 @@ export function GlowText({ children, className = "" }: { children: React.ReactNo
 export function ParallaxImage({ children, offset = 0.5 }: { children: React.ReactNode; offset?: number }) {
   const elementRef = useRef<HTMLDivElement>(null);
   const [translateY, setTranslateY] = useState(0);
+  const rafRef = useRef<number>();
 
   useEffect(() => {
+    let pendingTranslateY = 0;
+
     const handleScroll = () => {
       if (!elementRef.current) return;
 
@@ -235,11 +297,20 @@ export function ParallaxImage({ children, offset = 0.5 }: { children: React.Reac
       const windowHeight = window.innerHeight;
       const scrolled = (windowHeight - elementTop) * offset;
 
-      setTranslateY(scrolled);
+      pendingTranslateY = scrolled;
+
+      // Use RAF to throttle scroll updates
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        setTranslateY(pendingTranslateY);
+      });
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, [offset]);
 
   return (
@@ -247,7 +318,7 @@ export function ParallaxImage({ children, offset = 0.5 }: { children: React.Reac
       ref={elementRef}
       style={{
         transform: `translateY(${translateY}px)`,
-        transition: "transform 0.1s ease-out",
+        willChange: "transform",
       }}
     >
       {children}
