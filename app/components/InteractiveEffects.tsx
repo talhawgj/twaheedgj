@@ -111,7 +111,7 @@ export function MouseTracker({ children }: { children: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isInside, setIsInside] = useState(false);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -176,7 +176,7 @@ export function MouseTracker({ children }: { children: React.ReactNode }) {
 export function CursorGlow() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     let pendingPos = { x: 0, y: 0 };
@@ -235,7 +235,7 @@ export function ButtonRipple() {
 export function GlowText({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const textRef = useRef<HTMLDivElement>(null);
   const [glowColor, setGlowColor] = useState("rgba(255, 215, 0, 0)");
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     let pendingColor = "rgba(255, 215, 0, 0)";
@@ -285,7 +285,7 @@ export function GlowText({ children, className = "" }: { children: React.ReactNo
 export function ParallaxImage({ children, offset = 0.5 }: { children: React.ReactNode; offset?: number }) {
   const elementRef = useRef<HTMLDivElement>(null);
   const [translateY, setTranslateY] = useState(0);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     let pendingTranslateY = 0;
