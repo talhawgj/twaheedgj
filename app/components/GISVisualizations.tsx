@@ -9,7 +9,7 @@ export function SatelliteOrbitAnimation() {
       <svg
         viewBox="0 0 500 500"
         className="w-full h-full"
-        style={{ containment: "layout style paint" }}
+        style={{ containment: "layout style paint" } as React.CSSProperties}
       >
         <defs>
           <radialGradient id="earthGradient" cx="35%" cy="35%">
@@ -91,7 +91,7 @@ export function SatelliteOrbitAnimation() {
 export function DataFlowMapAnimation() {
   return (
     <div className="relative w-full h-80 bg-gradient-to-b from-black via-emerald-950/20 to-black rounded-lg overflow-hidden border border-yellow-500/20">
-      <svg viewBox="0 0 600 300" className="w-full h-full" preserveAspectRatio="none" style={{ containment: "layout style paint" }}>
+      <svg viewBox="0 0 600 300" className="w-full h-full" preserveAspectRatio="none" style={{ containment: "layout style paint" } as React.CSSProperties}>
         <defs>
           <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="rgba(255, 215, 0, 0.8)" />
@@ -166,7 +166,7 @@ export function DataFlowMapAnimation() {
 export function BackgroundGISAnimation() {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" style={{ containment: "layout style paint" }}>
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" style={{ containment: "layout style paint" } as React.CSSProperties}>
         <defs>
           <pattern id="mapGrid" x="100" y="100" width="100" height="100" patternUnits="userSpaceOnUse">
             <path
