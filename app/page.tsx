@@ -1,34 +1,16 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Script from "next/script";
-import dynamic from "next/dynamic";
-import Logo from "./components/Logo";
 import NavBar from "./components/NavBar";
 import { projects } from "./data/projects";
 import ProjectList from "./components/ProjectList";
 import {
-  MouseTracker,
-  GlowText,
-} from "./components/InteractiveEffects";
-import {
   SatelliteOrbitAnimation,
   DataFlowMapAnimation,
 } from "./components/GISVisualizations";
-import { ScrollReveal, ScrollRevealStagger } from "./components/ScrollReveal";
+import { ScrollReveal } from "./components/ScrollReveal";
 import { AnimatedCard } from "./components/AnimatedCard";
-
-// Lazy load expensive animation components
-const RippleEffect = dynamic(() => import("./components/InteractiveEffects").then(mod => ({ default: mod.RippleEffect })), {
-  loading: () => null,
-});
-
-const CursorGlow = dynamic(() => import("./components/InteractiveEffects").then(mod => ({ default: mod.CursorGlow })), {
-  loading: () => null,
-});
-
-const BackgroundGISAnimation = dynamic(() => import("./components/GISVisualizations").then(mod => ({ default: mod.BackgroundGISAnimation })), {
-  loading: () => null,
-});
+import DeferredDecorations from "./components/DeferredDecorations";
 
 export const metadata: Metadata = {
   title: "Talha Waheed — Full-Stack GIS Developer | GIS Mapping & Spatial Data",
@@ -55,17 +37,6 @@ export const metadata: Metadata = {
     description:
       "Full-Stack GIS Developer. Geospatial APIs, Web GIS, Coordinate Conversion, Remote Sensing.",
   },
-};
-
-const CATEGORY_COLORS: Record<string, string> = {
-  "GIS & Geospatial": "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-  "Remote Sensing": "bg-orange-500/10 text-orange-400 border-orange-500/20",
-  Frontend: "bg-violet-500/10 text-violet-400 border-violet-500/20",
-  Backend: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  "Full Stack": "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
-  "Data Science & ML": "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
-  "Desktop GIS": "bg-teal-500/10 text-teal-400 border-teal-500/20",
-  "Data Engineering": "bg-pink-500/10 text-pink-400 border-pink-500/20",
 };
 
 export default function Home() {
@@ -101,9 +72,7 @@ export default function Home() {
         strategy="afterInteractive"
       />
       
-      <RippleEffect />
-      <CursorGlow />
-      <BackgroundGISAnimation />
+      <DeferredDecorations />
 
       <main className="min-h-screen bg-black text-white">
         <NavBar />
@@ -136,14 +105,10 @@ export default function Home() {
             Available for new projects
           </div>
 
-          <MouseTracker>
-            <GlowText className="text-6xl sm:text-8xl font-extrabold tracking-tight mb-6 leading-none">
-              <h1>
-                <span className="block text-white">Talha</span>
-                <span className="block gradient-text">Waheed</span>
-              </h1>
-            </GlowText>
-          </MouseTracker>
+          <h1 className="text-6xl sm:text-8xl font-extrabold tracking-tight mb-6 leading-none">
+            <span className="block text-white">Talha</span>
+            <span className="block gradient-text">Waheed</span>
+          </h1>
 
           <p className="text-lg sm:text-2xl text-yellow-400 font-semibold mb-5 tracking-wide uppercase text-sm">
             Full-Stack GIS Developer & Spatial Data Engineer
@@ -211,7 +176,7 @@ export default function Home() {
 
       {/* ─── Stats ───────────────────────────────────────────── */}
       <ScrollReveal>
-        <section className="relative py-16 px-5 sm:px-8 border-y border-white/5 bg-white/[0.02]">
+        <section className="defer-paint relative py-16 px-5 sm:px-8 border-y border-white/5 bg-white/[0.02]">
           <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
           {[
             { value: `${projects.length}+`, label: "GitHub Projects" },
@@ -230,7 +195,7 @@ export default function Home() {
 
       {/* ─── Skills ──────────────────────────────────────────── */}
       <ScrollReveal>
-        <section id="skills" className="relative py-24 px-5 sm:px-8 overflow-hidden">
+        <section id="skills" className="defer-paint relative py-24 px-5 sm:px-8 overflow-hidden">
         {/* Data Flow Map Animation Background */}
         <div className="absolute inset-0 -z-10 flex items-center justify-center opacity-30 pointer-events-none">
           <DataFlowMapAnimation />
@@ -310,7 +275,7 @@ export default function Home() {
 
       {/* ─── Certifications ──────────────────────────────────── */}
       <ScrollReveal>
-      <section id="certifications" className="py-24 px-5 sm:px-8 border-y border-white/5 bg-white/[0.015]">
+      <section id="certifications" className="defer-paint py-24 px-5 sm:px-8 border-y border-white/5 bg-white/[0.015]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">Certifications</h2>
@@ -466,7 +431,7 @@ export default function Home() {
       </section>
       </ScrollReveal>
       <ScrollReveal>
-      <section id="projects" className="py-24 px-5 sm:px-8 bg-white/[0.01]">
+      <section id="projects" className="defer-paint py-24 px-5 sm:px-8 bg-white/[0.01]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">GIS Projects & Geospatial Solutions</h2>
@@ -497,7 +462,7 @@ export default function Home() {
 
       {/* ─── Contact ────────────────────────────────────────────── */}
       <ScrollReveal>
-      <footer id="contact" className="py-28 px-5 sm:px-8 relative overflow-hidden">
+      <footer id="contact" className="defer-paint py-28 px-5 sm:px-8 relative overflow-hidden">
         {/* Glow */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-yellow-600/10 blur-[100px]" />
@@ -538,7 +503,7 @@ export default function Home() {
               className="group p-4 rounded-2xl bg-white/10 hover:bg-green-500 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50"
               aria-label="Contact via WhatsApp"
             >
-              <img src="/whatsapp.png" alt="WhatsApp" className="w-8 h-8" />
+              <Image src="/whatsapp.png" alt="WhatsApp" width={32} height={32} className="w-8 h-8" />
             </a>
 
             {/* GitHub */}

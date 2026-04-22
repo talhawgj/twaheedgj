@@ -24,6 +24,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Defer below-the-fold rendering */
+.defer-paint {
+  content-visibility: auto;
+  contain-intrinsic-size: 1200px;
+}
+
 /* ── Gradient text ───────────────────────────────────────── */
 .gradient-text {
   background: linear-gradient(135deg, #FFD700, #FFC700, #FFED4E);
