@@ -93,22 +93,4 @@ I'm always interested in discussing geospatial projects, collaborating on GIS so
 - **Portfolio**: [twaheedgj.vercel.app](https://twaheedgj.vercel.app)
 
 ---
-
-## 📄 License
-
-This portfolio is open-source. Feel free to fork, modify, and use as inspiration for your own portfolio.
-
----
-
-## 🙏 Acknowledgments
-
-Built with:
-- **Next.js** - React framework
-- **Tailwind CSS** - Utility-first styling
-- **Vercel** - Hosting & deployment
-- **Mapbox** - Interactive maps
-- **Open source GIS community** - For incredible tools
-
----
-
 **Last Updated**: April 2025 | **Current Location**: Islamabad.Pakistan
