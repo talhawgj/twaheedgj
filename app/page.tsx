@@ -259,14 +259,14 @@ export default function Home() {
                 icon: "⚡",
                 color: "border-yellow-500/30 hover:border-yellow-500/60",
                 glow: "hover:shadow-yellow-500/10",
-                skills: ["FastAPI & Uvicorn", "Celery & Redis", "Django & DRF", "SQLAlchemy", "JWT Authentication", "PostgreSQL", "MongoDB", "Docker & Compose"],
+                skills: ["FastAPI & Uvicorn", "Next.js API Routes", "Supabase (PostgreSQL)", "Supabase Storage", "Zod Schema Validation", "SQLAlchemy", "JWT Authentication", "Docker & Compose"],
               },
               {
                 cat: "Frontend",
                 icon: "🎨",
                 color: "border-yellow-500/30 hover:border-yellow-500/60",
                 glow: "hover:shadow-yellow-500/10",
-                skills: ["Next.js 16 / React 19", "TypeScript", "Tailwind CSS", "Recharts & D3", "Mapbox GL JS", "Framer Motion", "Material-UI", "Vite"],
+                skills: ["Next.js 16 / React 19", "TypeScript", "Tailwind CSS", "Axios", "Recharts & D3", "Mapbox GL JS", "Framer Motion", "Vite"],
               },
             ].map((category, index) => (
               <AnimatedCard
@@ -608,7 +608,11 @@ export default function Home() {
               "Python",
               "TypeScript",
               "React",
-              "Next.js"
+              "Next.js",
+              "Supabase",
+              "Supabase Storage",
+              "Zod",
+              "Axios"
             ],
             knowsLanguage: ["en"],
             worksFor: {

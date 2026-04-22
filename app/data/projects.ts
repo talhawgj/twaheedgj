@@ -320,6 +320,45 @@ export const projects: Project[] = [
     status: "complete",
     year: "2023",
   },
+  {
+    slug: "carhub",
+    title: "carHub",
+    tagline: "Full-stack car dealership management system with multi-image uploads and responsive design",
+    description:
+      "A full-stack Next.js application for managing car listings with Supabase backend, image storage, and a modern responsive interface built with React 19 and Tailwind CSS.",
+    longDescription:
+      "carHub is a production-ready car dealership platform showcasing modern full-stack development practices. The application features a complete CRUD interface for car inventory management, allowing dealers to list cars, upload multiple images per vehicle, and manage inventory across an intuitive dashboard. Built with Next.js 15 API Routes as the backend and Supabase (PostgreSQL) for persistence, the system handles real-time data updates, image storage via Supabase Storage, and implements validation with Zod for type-safe request/response handling. The frontend leverages React 19's latest features and Tailwind CSS for a fully responsive design that works seamlessly across desktop, tablet, and mobile devices.",
+    tags: ["Next.js", "React 19", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Zod", "Axios"],
+    category: "Full Stack",
+    github: "https://github.com/talhawgj/carHub",
+    live: "https://twaheedgj-7hhz.vercel.app/",
+    features: [
+      "RESTful API endpoints for car CRUD operations (GET, POST, PUT, DELETE)",
+      "Supabase PostgreSQL database with structured car listings schema",
+      "Multi-image upload support per vehicle via Supabase Storage",
+      "Search and filter cars by attributes (brand, price, year, etc.)",
+      "Pagination support for efficient large dataset handling",
+      "Type-safe request validation using Zod schemas",
+      "Responsive design with Tailwind CSS (desktop, tablet, mobile)",
+      "Next.js 15 with App Router for optimal performance",
+      "Axios HTTP client for seamless API communication",
+      "Full responsive design across all pages and components",
+    ],
+    architecture: [
+      "Next.js 15 App Router with TypeScript for the frontend and API routes",
+      "Next.js API Routes as the backend gateway for database operations",
+      "Supabase PostgreSQL for relational data storage",
+      "Supabase Storage for scalable image hosting and CDN delivery",
+      "Zod for runtime schema validation on API requests",
+      "Axios for client-side HTTP requests with interceptors",
+      "React 19 with modern hooks and component composition",
+      "Tailwind CSS with responsive utility-first design",
+    ],
+    gradient: "from-blue-500 to-purple-700",
+    icon: "🚗",
+    status: "complete",
+    year: "2026",
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
