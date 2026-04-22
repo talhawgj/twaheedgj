@@ -64,7 +64,7 @@ I'm a **Full-Stack GIS Developer** specializing in geospatial software developme
 ### Language & Frameworks
 - **Backend**: Python (FastAPI, Django), Node.js/TypeScript
 - **Frontend**: React 19, Next.js 16, TypeScript
-- **Databases**: PostgreSQL, PostGIS, MongoDB
+- **Databases**: PostgreSQL, PostGIS, MongoDB, Supabase
 - **Geospatial**: QGIS, ArcGIS Pro, Mapbox GL JS, Cesium.js
 
 ### Libraries & Tools
