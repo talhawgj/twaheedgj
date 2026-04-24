@@ -3,8 +3,8 @@
 /* ── Design tokens ───────────────────────────────────────── */
 :root {
   --bg-primary: #000000;
-  --bg-surface: rgba(255,255,255,0.03);
-  --border-subtle: rgba(255,215,0,0.15);
+  --bg-surface: rgba(255, 255, 255, 0.03);
+  --border-subtle: rgba(255, 215, 0, 0.15);
   --text-primary: #ffffff;
   --text-muted: #bfbfbf;
   --accent-blue: #FFD700;
@@ -12,9 +12,15 @@
 }
 
 /* ── Base ────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: var(--bg-primary);
@@ -48,16 +54,28 @@ body {
 /* ── Hero grid overlay ───────────────────────────────────── */
 .hero-grid {
   background-image:
-    linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
-    linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
 /* ── Scroll bar ──────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #334155; }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
 
 /* ── Focus visible ───────────────────────────────────────── */
 :focus-visible {
@@ -79,6 +97,7 @@ body {
   0% {
     transform: rotate(0deg) translateX(160px) rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg) translateX(160px) rotate(-360deg);
   }
@@ -97,12 +116,15 @@ body {
     stroke-dashoffset: 350;
     opacity: 0;
   }
+
   20% {
     opacity: 1;
   }
+
   80% {
     opacity: 1;
   }
+
   100% {
     stroke-dashoffset: 0;
     opacity: 0;
@@ -121,10 +143,12 @@ body {
     opacity: 0;
     transform: scale(0);
   }
+
   20% {
     opacity: 1;
     transform: scale(1);
   }
+
   100% {
     opacity: 0;
     transform: scale(2);
@@ -141,9 +165,11 @@ body {
   0% {
     stroke-dashoffset: 500;
   }
+
   50% {
     stroke-dashoffset: 0;
   }
+
   100% {
     stroke-dashoffset: 500;
   }
@@ -161,10 +187,12 @@ body {
     stroke-dashoffset: 450;
     opacity: 0.4;
   }
+
   40% {
     stroke-dashoffset: 0;
     opacity: 0.8;
   }
+
   100% {
     stroke-dashoffset: 450;
     opacity: 0.4;
@@ -184,12 +212,15 @@ body {
     transform: translateX(-50px) translateY(50px);
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     transform: translateX(300px) translateY(-50px);
     opacity: 0;
@@ -207,12 +238,15 @@ body {
     transform: translateX(-30px);
     opacity: 0;
   }
+
   15% {
     opacity: 1;
   }
+
   85% {
     opacity: 1;
   }
+
   100% {
     transform: translateX(350px);
     opacity: 0;
@@ -231,10 +265,13 @@ body {
 }
 
 @keyframes data-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     r: 4px;
     opacity: 0.9;
   }
+
   50% {
     r: 6px;
     opacity: 0.4;
@@ -246,9 +283,11 @@ body {
   0% {
     opacity: 0.2;
   }
+
   50% {
     opacity: 0.4;
   }
+
   100% {
     opacity: 0.2;
   }
@@ -264,6 +303,7 @@ body {
   0% {
     transform: translateX(-100px);
   }
+
   100% {
     transform: translateX(100px);
   }
@@ -282,6 +322,7 @@ body {
     opacity: 0;
     transform: translateY(40px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -312,6 +353,7 @@ body {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -331,6 +373,7 @@ body {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -352,6 +395,7 @@ body {
     opacity: 0;
     transform: scale(0.95);
   }
+
   100% {
     opacity: 1;
     transform: scale(1);
@@ -366,4 +410,3 @@ body {
 .scroll-scale-in.scroll-revealed {
   animation: scroll-scale-in 0.8s ease-out forwards;
 }
-

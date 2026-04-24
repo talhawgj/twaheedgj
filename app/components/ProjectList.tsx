@@ -50,16 +50,15 @@ export default function ProjectList({ projects, categories }: { projects: Projec
             <button
               key={cat}
               onClick={() => startTransition(() => setActiveFilter(cat))}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 ${
-                isActive
-                  ? cat === "All"
-                    ? "bg-yellow-500 text-white border-yellow-500 shadow-lg shadow-yellow-500/20"
-                    : CATEGORY_COLORS[cat]?.replace("text-", "bg-").replace(/\/\d+/, "") +
-                      " text-white border-transparent shadow-lg object-none shadow-white/10"
-                  : CATEGORY_COLORS[cat]
+              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 ${isActive
+                ? cat === "All"
+                  ? "bg-yellow-500 text-white border-yellow-500 shadow-lg shadow-yellow-500/20"
+                  : CATEGORY_COLORS[cat]?.replace("text-", "bg-").replace(/\/\d+/, "") +
+                  " text-white border-transparent shadow-lg object-none shadow-white/10"
+                : CATEGORY_COLORS[cat]
                   ? `${CATEGORY_COLORS[cat]} hover:bg-white/10`
                   : "bg-white/5 text-slate-400 border-white/10 hover:bg-white/10 hover:text-white"
-              } ${isPending ? "opacity-70" : ""}`}
+                } ${isPending ? "opacity-70" : ""}`}
             >
               {cat}
             </button>
@@ -81,9 +80,8 @@ export default function ProjectList({ projects, categories }: { projects: Projec
                   <div className="text-6xl filter drop-shadow-xl">{project.icon}</div>
                   <div className="absolute top-3 right-3">
                     <span
-                      className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${
-                        CATEGORY_COLORS[project.category] ?? "bg-white/10 text-white border-white/20"
-                      }`}
+                      className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${CATEGORY_COLORS[project.category] ?? "bg-white/10 text-white border-white/20"
+                        }`}
                     >
                       {project.category}
                     </span>

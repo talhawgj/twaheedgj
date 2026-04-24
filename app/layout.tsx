@@ -333,7 +333,7 @@ export default function RootLayout({
         {/* Preconnect to external resources for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
+
         {/* Microsoft Clarity Analytics */}
         <script
           dangerouslySetInnerHTML={{
