@@ -18,38 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1.0,
     },
-    // Projects index (implicit, combined with home)
+    // Individual project pages (statically generated)
     ...projectRoutes,
-    // Additional pages for indexing
-    {
-      url: `${BASE_URL}/#projects`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/#about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/#skills`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/#certifications`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${BASE_URL}/#contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
   ];
 }

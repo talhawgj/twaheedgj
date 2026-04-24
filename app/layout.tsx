@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -86,7 +86,11 @@ export const metadata: Metadata = {
     "Full-Stack developer",
     "Supabase developer",
     "Geospatial portfolio",
-    "GIS portfolio 2024",
+    "GIS portfolio 2025",
+    "GIS developer for hire",
+    "hire GIS developer",
+    "freelance GIS developer",
+    "geospatial consultant",
   ],
 
   // ── Author ─────────────────────────────────────────────────────────────────
@@ -100,6 +104,8 @@ export const metadata: Metadata = {
   },
 
   // ── Open Graph ─────────────────────────────────────────────────────────────
+  // NOTE: opengraph-image.tsx auto-generates the OG PNG — no manual url needed here.
+  // Next.js 15+ App Router automatically sets the OG image from the file.
   openGraph: {
     type: "website",
     url: BASE_URL,
@@ -108,15 +114,6 @@ export const metadata: Metadata = {
     description:
       "Expert in GIS mapping, GIS software development, web GIS applications, and spatial data engineering. Building production-grade geospatial applications, coordinate conversion APIs, interactive mapping tools, QGIS plugins, and remote sensing pipelines.",
     locale: "en_US",
-    images: [
-      {
-        url: "/og-image.svg",
-        width: 1200,
-        height: 630,
-        alt: "Talha Waheed — Full-Stack GIS Developer Portfolio",
-        type: "image/svg+xml",
-      },
-    ],
   },
 
   // ── Twitter Card ───────────────────────────────────────────────────────────
@@ -125,7 +122,6 @@ export const metadata: Metadata = {
     title: "Talha Waheed | Full-Stack GIS Developer",
     description:
       "GIS Mapping & Spatial Data Expert. FastAPI GIS APIs · Web GIS Portals · QGIS · ArcGIS Pro · Mapbox · PostGIS. Building geospatial software solutions.",
-    images: ["/og-image.svg"],
     creator: "@talhawaheed",
   },
 
@@ -153,15 +149,10 @@ export const metadata: Metadata = {
 
   // ── Additional SEO fields ──────────────────────────────────────────────────
   referrer: "strict-origin-when-cross-origin",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
     ],
     apple: "/apple-touch-icon.png",
   },
@@ -175,6 +166,14 @@ export const metadata: Metadata = {
   },
 };
 
+// ─── Viewport (separate export required by Next.js App Router) ────────────────
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#000000",
+};
+
 // ─── JSON-LD Structured data ──────────────────────────────────────────────────
 const personSchema = {
   "@context": "https://schema.org",
@@ -184,7 +183,7 @@ const personSchema = {
   url: BASE_URL,
   image: {
     "@type": "ImageObject",
-    url: `${BASE_URL}/og-image.svg`,
+    url: `${BASE_URL}/opengraph-image.png`,
     width: 1200,
     height: 630,
   },
@@ -250,7 +249,7 @@ const organizationSchema = {
   url: BASE_URL,
   logo: {
     "@type": "ImageObject",
-    url: `${BASE_URL}/og-image.svg`,
+    url: `${BASE_URL}/opengraph-image.png`,
     width: 1200,
     height: 630,
   },

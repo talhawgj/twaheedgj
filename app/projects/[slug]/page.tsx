@@ -27,12 +27,6 @@ export async function generateMetadata({
   const url = `${BASE_URL}/projects/${slug}`;
   const title = `${project.title} — Talha Waheed`;
   const description = project.description;
-  const ogImage = {
-    url: `/og-image.png`,
-    width: 1200,
-    height: 630,
-    alt: `${project.title} — Talha Waheed GIS Developer`,
-  };
 
   return {
     title,
@@ -53,14 +47,12 @@ export async function generateMetadata({
       siteName: "Talha Waheed Portfolio",
       title,
       description,
-      images: [ogImage],
       locale: "en_US",
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage.url],
     },
     robots: { index: true, follow: true },
   };

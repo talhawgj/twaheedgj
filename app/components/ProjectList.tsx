@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Link from "next/link";
 
 interface Project {
@@ -34,6 +34,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 
 export default function ProjectList({ projects, categories }: { projects: Project[]; categories: string[] }) {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [isPending, startTransition] = useTransition();
 
   const filteredProjects =
     activeFilter === "All"
@@ -48,7 +49,7 @@ export default function ProjectList({ projects, categories }: { projects: Projec
           return (
             <button
               key={cat}
-              onClick={() => setActiveFilter(cat)}
+              onClick={() => startTransition(() => setActiveFilter(cat))}
               className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 ${
                 isActive
                   ? cat === "All"
@@ -58,7 +59,7 @@ export default function ProjectList({ projects, categories }: { projects: Projec
                   : CATEGORY_COLORS[cat]
                   ? `${CATEGORY_COLORS[cat]} hover:bg-white/10`
                   : "bg-white/5 text-slate-400 border-white/10 hover:bg-white/10 hover:text-white"
-              }`}
+              } ${isPending ? "opacity-70" : ""}`}
             >
               {cat}
             </button>

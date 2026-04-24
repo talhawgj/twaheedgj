@@ -87,7 +87,8 @@ body {
 .animate-satellite-orbit {
   transform-origin: 250px 250px;
   animation: satellite-orbit 10s linear infinite;
-  will-change: transform;
+  /* avoid will-change:transform on load — let the browser decide */
+  will-change: auto;
 }
 
 /* Footprint Path Animation */

@@ -4,10 +4,7 @@ import Script from "next/script";
 import NavBar from "./components/NavBar";
 import { projects } from "./data/projects";
 import ProjectList from "./components/ProjectList";
-import {
-  SatelliteOrbitAnimation,
-  DataFlowMapAnimation,
-} from "./components/GISVisualizations";
+import { LazySatelliteOrbitAnimation, LazyDataFlowMapAnimation } from "./components/LazyAnimations";
 import { ScrollReveal } from "./components/ScrollReveal";
 import { AnimatedCard } from "./components/AnimatedCard";
 import DeferredDecorations from "./components/DeferredDecorations";
@@ -22,14 +19,6 @@ export const metadata: Metadata = {
       "Full-Stack GIS Developer specializing in geospatial APIs, coordinate conversion, web GIS portals, and spatial data engineering.",
     url: "https://twaheedgj.vercel.app",
     type: "website",
-    images: [
-      {
-        url: "https://twaheedgj.vercel.app/og-image.svg",
-        width: 1200,
-        height: 630,
-        alt: "Talha Waheed Portfolio",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -93,10 +82,13 @@ export default function Home() {
         <div className="absolute inset-0 hero-grid opacity-[0.03] pointer-events-none" aria-hidden="true" />
 
         <div className="relative z-10 max-w-5xl mx-auto">
-          {/* Satellite Orbit Animation - Behind Text */}
-          <div className="absolute inset-0 -z-10 flex justify-center items-center pointer-events-none">
+          {/* Satellite Orbit Animation - deferred, never blocks LCP */}
+          <div
+            className="absolute inset-0 -z-10 flex justify-center items-center pointer-events-none"
+            aria-hidden="true"
+          >
             <div className="w-full max-w-3xl">
-              <SatelliteOrbitAnimation />
+              <LazySatelliteOrbitAnimation />
             </div>
           </div>
 
@@ -198,7 +190,7 @@ export default function Home() {
         <section id="skills" className="defer-paint relative py-24 px-5 sm:px-8 overflow-hidden">
         {/* Data Flow Map Animation Background */}
         <div className="absolute inset-0 -z-10 flex items-center justify-center opacity-30 pointer-events-none">
-          <DataFlowMapAnimation />
+          <LazyDataFlowMapAnimation />
         </div>
 
         <div className="max-w-7xl mx-auto">
@@ -540,53 +532,6 @@ export default function Home() {
       </footer>
       </ScrollReveal>
 
-      {/* Schema Markup for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Talha Waheed",
-            jobTitle: "Full-Stack GIS Developer & Spatial Data Engineer",
-            url: "https://twaheedgj.vercel.app",
-            sameAs: [
-              "https://github.com/talhawgj",
-              "https://www.linkedin.com/in/talhawgj/",
-              "https://upwork.com/freelancers/talhaw"
-            ],
-            email: "talhawaheed7807@gmail.com",
-            description:
-              "Expert in GIS mapping, GIS software development, geospatial data analysis, web GIS applications, and spatial data engineering. Skilled in QGIS, ArcGIS Pro, PostGIS, GDAL, and full-stack web technologies.",
-            skills: [
-              "GIS Mapping",
-              "Geospatial Data Analysis",
-              "GIS Software Development",
-              "Web GIS",
-              "QGIS",
-              "ArcGIS",
-              "PostGIS",
-              "GDAL",
-              "Spatial Data",
-              "Geospatial APIs",
-              "Full-Stack Development",
-              "Python",
-              "TypeScript",
-              "React",
-              "Next.js",
-              "Supabase",
-              "Supabase Storage",
-              "Zod",
-              "Axios"
-            ],
-            knowsLanguage: ["en"],
-            worksFor: {
-              "@type": "Organization",
-              name: "Freelance GIS Development"
-            }
-          })
-        }}
-      />
     </main>
     </>
   );
