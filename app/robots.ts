@@ -10,6 +10,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: "https://twaheedgj.vercel.app/sitemap.xml",
-    host: "twaheedgj.vercel.app",
   };
 }
