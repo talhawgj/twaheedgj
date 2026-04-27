@@ -88,7 +88,7 @@ I'm a **Full-Stack GIS Developer** specializing in geospatial software developme
 I'm always interested in discussing geospatial projects, collaborating on GIS solutions, or exploring new opportunities.
 
 - **Email**: [talhawaheed7807@gmail.com](mailto:talhawaheed7807@gmail.com)
-- **GitHub**: [@talhawgj](https://github.com/talhawgj)
+- **GitHub**: [talhawgj](https://github.com/talhawgj)
 - **Upwork**: [talhaw](https://upwork.com/freelancers/talhaw)
 - **Portfolio**: [twaheedgj.vercel.app](https://twaheedgj.vercel.app)
 
