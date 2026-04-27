@@ -4,6 +4,7 @@ import Script from "next/script";
 import NavBar from "./components/NavBar";
 import { projects } from "./data/projects";
 import ProjectList from "./components/ProjectList";
+import ContactForm from "./components/ContactForm";
 import { LazySatelliteOrbitAnimation, LazyDataFlowMapAnimation } from "./components/LazyAnimations";
 import { ScrollReveal } from "./components/ScrollReveal";
 import { AnimatedCard } from "./components/AnimatedCard";
@@ -12,7 +13,7 @@ import DeferredDecorations from "./components/DeferredDecorations";
 export const metadata: Metadata = {
   title: "Talha Waheed — Full-Stack GIS Developer | GIS Mapping & Spatial Data",
   description:
-    "Full-Stack GIS Developer specializing in mapping, spatial data, QGIS, ArcGIS Pro, and geospatial APIs for real-world impact. Explore portfolio of 5+ GIS projects.",
+    "Talha Waheed is a GIS developer in Islamabad, Pakistan. Portfolio of 12+ projects: web GIS portals, PostGIS APIs, routing engines, and remote sensing pipelines.",
   openGraph: {
     title: "Talha Waheed | Full-Stack GIS Developer",
     description:
@@ -47,7 +48,7 @@ export default function Home() {
         name: project.title,
         description: project.description,
         url: `https://twaheedgj.vercel.app/projects/${project.slug}`,
-        image: `https://twaheedgj.vercel.app/og-image.svg`,
+        image: `https://twaheedgj.vercel.app/opengraph-image.png`,
       })),
     },
   };
@@ -92,18 +93,41 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Profile photo */}
+            <div className="mb-8 flex justify-center">
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-yellow-500/20 blur-xl scale-110" aria-hidden="true" />
+                <Image
+                  src="/profile.png"
+                  alt="Talha Waheed — Full-Stack GIS Developer based in Islamabad, Pakistan"
+                  width={120}
+                  height={120}
+                  priority
+                  className="relative rounded-full border-2 border-yellow-500/40 object-cover w-28 h-28 sm:w-32 sm:h-32"
+                />
+              </div>
+            </div>
+
+
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-slate-400 mb-8 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Available for new projects
             </div>
 
             <h1 className="text-6xl sm:text-8xl font-extrabold tracking-tight mb-6 leading-none">
-              <span className="block text-white">Talha</span>
+              <span className="block text-white">Talha </span>
               <span className="block gradient-text">Waheed</span>
             </h1>
 
-            <p className="text-lg sm:text-2xl text-yellow-400 font-semibold mb-5 tracking-wide uppercase text-sm">
-              Full-Stack GIS Developer & Spatial Data Engineer
+            <p className="text-lg sm:text-2xl text-yellow-400 font-semibold mb-3 tracking-wide uppercase text-sm">
+              Full-Stack GIS Developer &amp; Spatial Data Engineer
+            </p>
+
+            <p className="text-sm text-slate-500 mb-5 flex items-center justify-center gap-1.5">
+              <svg className="w-3.5 h-3.5 text-slate-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              Islamabad, Pakistan
             </p>
 
             <p className="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed mb-12">
@@ -206,21 +230,33 @@ export default function Home() {
                 {[
                   {
                     cat: "Geospatial & GIS",
-                    icon: "🌍",
+                    icon: (
+                      <svg aria-hidden="true" className="w-8 h-8 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                      </svg>
+                    ),
                     color: "border-emerald-500/30 hover:border-emerald-500/60",
                     glow: "hover:shadow-emerald-500/10",
                     skills: ["QGIS Desktop & Web GIS", "ArcGIS Pro & Online", "PostGIS & PostgreSQL", "Mapbox GL JS / Cesium", "GeoServer & Web Services", "Pyproj & GDAL", "GeoPandas & Shapely", "OSRM Routing Engine"],
                   },
                   {
                     cat: "Backend & APIs",
-                    icon: "⚡",
+                    icon: (
+                      <svg aria-hidden="true" className="w-8 h-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                      </svg>
+                    ),
                     color: "border-yellow-500/30 hover:border-yellow-500/60",
                     glow: "hover:shadow-yellow-500/10",
                     skills: ["FastAPI & Uvicorn", "Next.js API Routes", "Supabase (PostgreSQL)", "Supabase Storage", "Zod Schema Validation", "SQLAlchemy", "JWT Authentication", "Docker & Compose"],
                   },
                   {
                     cat: "Frontend",
-                    icon: "🎨",
+                    icon: (
+                      <svg aria-hidden="true" className="w-8 h-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+                      </svg>
+                    ),
                     color: "border-yellow-500/30 hover:border-yellow-500/60",
                     glow: "hover:shadow-yellow-500/10",
                     skills: ["Next.js 16 / React 19", "TypeScript", "Tailwind CSS", "Axios", "Recharts & D3", "Mapbox GL JS", "Framer Motion", "Vite"],
@@ -231,7 +267,7 @@ export default function Home() {
                     index={index}
                     className={`p-6 rounded-2xl bg-white/[0.03] border ${category.color} transition-all duration-300 shadow-xl ${category.glow}`}
                   >
-                    <div className="text-3xl mb-4">{category.icon}</div>
+                    <div className="mb-4">{category.icon}</div>
                     <h3 className="text-base font-bold text-white mb-5">{category.cat}</h3>
                     <ul className="space-y-2.5">
                       {category.skills.map((skill) => (
@@ -249,7 +285,11 @@ export default function Home() {
                   index={3}
                   className="p-6 rounded-2xl bg-white/[0.03] border border-yellow-500/30 hover:border-yellow-500/60 transition-all duration-300 shadow-xl hover:shadow-yellow-500/10"
                 >
-                  <div className="text-3xl mb-4">🧠</div>
+                  <div className="mb-4">
+                    <svg aria-hidden="true" className="w-8 h-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
+                    </svg>
+                  </div>
                   <h3 className="text-base font-bold text-white mb-5">Data Science & ML</h3>
                   <ul className="space-y-2.5">
                     {["Python & Pandas", "Scikit-learn", "Google Earth Engine", "Rasterio", "AWS S3 / EC2", "Firebase", "Sentinel Hub API", "Selenium Web Scraping"].map((skill) => (
@@ -452,85 +492,101 @@ export default function Home() {
           </section>
         </ScrollReveal>
 
-        {/* ─── Contact ────────────────────────────────────────────── */}
+        {/* ─── Contact ───────────────────────────────────────────── */}
         <ScrollReveal>
           <footer id="contact" className="defer-paint py-28 px-5 sm:px-8 relative overflow-hidden">
             {/* Glow */}
             <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-yellow-600/10 blur-[100px]" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full bg-yellow-600/8 blur-[120px]" />
             </div>
 
-            <div className="relative max-w-4xl mx-auto">
-              <div className="text-center mb-20">
-                <h2 className="text-4xl sm:text-6xl font-extrabold text-white mb-6 leading-tight">
+            <div className="relative max-w-5xl mx-auto">
+              {/* Heading */}
+              <div className="text-center mb-16">
+                <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
                   Let&apos;s Build a GIS Solution{" "}
                   <span className="gradient-text">Together</span>
                 </h2>
-                <p className="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto">
-                  Available for GIS development, geospatial projects, web GIS applications, spatial data engineering, and consulting. Whether
-                  it&apos;s a GIS mapping platform, geospatial API, data pipeline, or custom GIS software — let&apos;s discuss your next project.
+                <p className="text-slate-400 text-lg max-w-xl mx-auto">
+                  Available for GIS development, geospatial APIs, web mapping, and spatial data engineering.
                 </p>
               </div>
 
-              {/* Contact Icons - Minimal Design */}
-              <div className="flex justify-center items-center gap-6 mb-20">
-                {/* Email */}
-                <a
-                  href="mailto:talhawaheed7807@gmail.com"
-                  id="email-contact"
-                  className="group p-4 rounded-2xl bg-white/10 hover:bg-yellow-500 text-white hover:text-black transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/50"
-                  aria-label="Send email"
-                >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                  </svg>
-                </a>
+              {/* Two-column layout */}
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
 
-                {/* WhatsApp */}
-                <a
-                  href="https://wa.me/923096444416?text=Hi%20Talha%2C%20I%27m%20interested%20in%20discussing%20a%20project%20with%20you."
-                  target="_blank"
-                  rel="noreferrer"
-                  id="whatsapp-contact"
-                  className="group p-4 rounded-2xl bg-white/10 hover:bg-green-500 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50"
-                  aria-label="Contact via WhatsApp"
-                >
-                  <Image src="/whatsapp.png" alt="WhatsApp" width={32} height={32} className="w-8 h-8" />
-                </a>
+                {/* Left — Form (3/5) */}
+                <div className="lg:col-span-3 p-8 rounded-2xl bg-white/[0.02] border border-white/8 shadow-2xl">
+                  <h3 className="text-xl font-bold text-white mb-1">Send a Message</h3>
+                  <p className="text-slate-500 text-sm mb-7">Fill in the form and I&apos;ll get back to you within 24 hours.</p>
+                  <ContactForm />
+                </div>
 
-                {/* GitHub */}
-                <a
-                  href="https://github.com/talhawgj"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group p-4 rounded-2xl bg-white/10 hover:bg-white text-white hover:text-black transition-all duration-300 hover:shadow-lg hover:shadow-white/50"
-                  aria-label="GitHub profile"
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                  </svg>
-                </a>
+                {/* Right — Sidebar (2/5) */}
+                <aside className="lg:col-span-2 space-y-6">
+                  {/* Availability card */}
+                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/8">
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-emerald-400 text-sm font-semibold">Available for work</span>
+                    </div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      Based in Islamabad, Pakistan. Open to remote GIS projects, freelance contracts, and full-time opportunities globally.
+                    </p>
+                    <div className="mt-5 space-y-3">
+                      {[
+                        { label: "Response time", value: "< 24 hours" },
+                        { label: "Timezone", value: "PKT (UTC +5)" },
+                        { label: "Preferred contact", value: "This form" },
+                      ].map(({ label, value }) => (
+                        <div key={label} className="flex justify-between text-xs">
+                          <span className="text-slate-500 uppercase tracking-wide">{label}</span>
+                          <span className="text-slate-300 font-medium">{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-                {/* LinkedIn */}
-                <a
-                  href="https://www.linkedin.com/in/talhawgj/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group p-4 rounded-2xl bg-white/10 hover:bg-blue-600 text-white hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50"
-                  aria-label="LinkedIn profile"
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
-                  </svg>
-                </a>
+                  {/* Social links */}
+                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/8">
+                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">Or reach me directly</p>
+                    <div className="space-y-3">
+                      <a href="https://wa.me/923096444416?text=Hi%20Talha%2C%20I%27m%20interested%20in%20discussing%20a%20project%20with%20you." target="_blank" rel="noreferrer"
+                        className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/8 transition-all group" aria-label="Contact via WhatsApp">
+                        <Image src="/whatsapp.png" alt="" role="presentation" width={20} height={20} className="w-5 h-5" />
+                        <span className="text-sm text-slate-300 group-hover:text-white transition-colors">WhatsApp</span>
+                        <svg className="w-3.5 h-3.5 text-slate-600 group-hover:text-yellow-400 transition-colors ml-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                      </a>
+                      <a href="https://github.com/talhawgj" target="_blank" rel="noreferrer"
+                        className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/8 transition-all group" aria-label="GitHub profile">
+                        <svg className="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+                        <span className="text-sm text-slate-300 group-hover:text-white transition-colors">GitHub</span>
+                        <svg className="w-3.5 h-3.5 text-slate-600 group-hover:text-yellow-400 transition-colors ml-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                      </a>
+                      <a href="https://www.linkedin.com/in/talhawgj/" target="_blank" rel="noreferrer"
+                        className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/8 transition-all group" aria-label="LinkedIn profile">
+                        <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" /></svg>
+                        <span className="text-sm text-slate-300 group-hover:text-white transition-colors">LinkedIn</span>
+                        <svg className="w-3.5 h-3.5 text-slate-600 group-hover:text-yellow-400 transition-colors ml-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                      </a>
+                      <a href="https://upwork.com/freelancers/talhaw" target="_blank" rel="noreferrer"
+                        className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/8 transition-all group" aria-label="Upwork profile">
+                        <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.58,6.86A5.25,5.25,0,0,0,13.26,9.1V2.6H10.42V13.88a3.17,3.17,0,1,1-6.33,0V6.86H1.25v7.2a6,6,0,0,0,12,0V11a2.4,2.4,0,0,1,4.36,1.42c0,3-4.52,7.31-4.52,7.31L15.3,21.8l3.6-5.83A5.13,5.13,0,0,0,20.42,12C20.42,8.91,19.34,6.86,17.58,6.86Z" /></svg>
+                        <span className="text-sm text-slate-300 group-hover:text-white transition-colors">Upwork</span>
+                        <svg className="w-3.5 h-3.5 text-slate-600 group-hover:text-yellow-400 transition-colors ml-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                      </a>
+                    </div>
+                  </div>
+                </aside>
               </div>
 
-              <div className="pt-8 border-t border-white/8 text-center text-slate-600 text-sm">
-                © {new Date().getFullYear()} Talha Waheed · GJ
+              <div className="mt-16 pt-8 border-t border-white/8 text-center text-slate-600 text-sm">
+                © {new Date().getFullYear()} Talha Waheed &middot; GIS Developer &middot; Islamabad, Pakistan
               </div>
             </div>
           </footer>
         </ScrollReveal>
+
 
       </main>
     </>

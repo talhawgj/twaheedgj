@@ -51,7 +51,7 @@ export default function ProjectPageClient({
           </div>
 
           <div className="flex items-start gap-6">
-            <div className="text-7xl sm:text-8xl flex-shrink-0 filter drop-shadow-2xl">{project.icon}</div>
+            <div className="text-7xl sm:text-8xl flex-shrink-0 filter drop-shadow-2xl" aria-hidden="true">{project.icon}</div>
             <div>
               <h1 className="text-4xl sm:text-6xl font-extrabold text-white mb-4 leading-tight tracking-tight">
                 {project.title}
@@ -226,7 +226,7 @@ export default function ProjectPageClient({
                 <Link key={related.slug} href={`/projects/${related.slug}`} className="group">
                   <article className="h-full flex flex-col rounded-2xl border border-white/8 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300 overflow-hidden hover:-translate-y-1">
                     <div className={`h-28 bg-gradient-to-br ${related.gradient} flex items-center justify-center`}>
-                      <div className="text-4xl">{related.icon}</div>
+                      <div className="text-4xl" aria-hidden="true">{related.icon}</div>
                     </div>
                     <div className="p-5 flex-1 flex flex-col">
                       <h3 className="font-bold text-white mb-1.5 group-hover:text-yellow-300 transition-colors text-sm">

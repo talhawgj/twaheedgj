@@ -24,6 +24,7 @@ export function generateProjectSchema(project: {
   description: string;
   longDescription?: string;
   tags: string[];
+  features?: string[];
   category: string;
   github?: string;
   live?: string;
@@ -34,37 +35,52 @@ export function generateProjectSchema(project: {
 
   return {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "@id": url,
-    name: project.title,
-    description: project.description,
-    author: {
-      "@type": "Person",
-      name: "Talha Waheed",
-      url: BASE_URL,
-    },
-    keywords: [...project.tags, project.category].join(","),
-    dateCreated: `${project.year}-01-01`,
-    inLanguage: "en-US",
-    isAccessibleForFree: true,
-    url: url,
-    mainEntity: {
-      "@type": "SoftwareApplication",
-      name: project.title,
-      description: project.longDescription || project.description,
-      applicationCategory: "Utility",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
+    "@graph": [
+      {
+        "@type": ["CreativeWork", "SoftwareSourceCode"],
+        "@id": url,
+        name: project.title,
+        description: project.description,
+        abstract: project.longDescription || project.description,
+        url: project.live || url,
+        sameAs: url,
+        ...(project.github && { codeRepository: project.github }),
+        programmingLanguage: project.tags,
+        ...(project.features && project.features.length > 0 && {
+          featureList: project.features.join(", "),
+        }),
+        keywords: [...project.tags, project.category].join(", "),
+        dateCreated: `${project.year}-01-01`,
+        datePublished: `${project.year}-01-01`,
+        inLanguage: "en-US",
+        isAccessibleForFree: true,
+        creativeWorkStatus: project.status === "complete"
+          ? "Published"
+          : project.status === "wip"
+          ? "Draft"
+          : "Archived",
+        author: {
+          "@type": "Person",
+          "@id": `${BASE_URL}/#person`,
+          name: "Talha Waheed",
+          url: BASE_URL,
+        },
+        publisher: {
+          "@type": "Person",
+          "@id": `${BASE_URL}/#person`,
+          name: "Talha Waheed",
+        },
+        isPartOf: {
+          "@type": "WebSite",
+          "@id": `${BASE_URL}/#website`,
+          name: "Talha Waheed — GIS Developer Portfolio",
+          url: BASE_URL,
+        },
       },
-      keywords: [...project.tags, project.category].join(","),
-    },
-    codeRepository:
-      project.github || undefined,
-    ...(project.live && { url: project.live }),
+    ],
   };
 }
+
 
 export function generateFAQSchema(faqs: Array<{ question: string; answer: string }>) {
   return {
@@ -106,10 +122,10 @@ export function generateArticleSchema(article: {
       name: "Talha Waheed",
       logo: {
         "@type": "ImageObject",
-        url: `${BASE_URL}/og-image.svg`,
+        url: `${BASE_URL}/opengraph-image.png`,
       },
     },
-    image: article.image || `${BASE_URL}/og-image.svg`,
+    image: article.image || `${BASE_URL}/opengraph-image.png`,
     articleBody: article.content,
   };
 }
@@ -167,7 +183,7 @@ export function generateLocalBusinessSchema(business: {
     "@type": "LocalBusiness",
     name: business.name,
     description: business.description,
-    image: business.image || `${BASE_URL}/og-image.svg`,
+    image: business.image || `${BASE_URL}/opengraph-image.png`,
     telephone: business.telephone,
     address: business.address,
     openingHoursSpecification: business.openingHours?.map((day) => ({

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
   // ── Description (150-160 chars) ─────────────────────────────────────────────
   description:
-    "Full-Stack GIS Developer specializing in mapping, spatial data, QGIS, ArcGIS Pro, PostGIS, and geospatial APIs. Building scalable applications.",
+    "Talha Waheed — Full-Stack GIS Developer in Islamabad, Pakistan. GIS mapping, QGIS, ArcGIS Pro, PostGIS, and geospatial APIs for production web applications.",
 
   // ── Keywords — long-tail + short-tail mix ──────────────────────────────────
   keywords: [
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
     "Geographic information systems",
     // Role-based
     "Full-Stack GIS Developer",
-    "GIS Developer Oman",
     "GIS Developer Pakistan",
+    "GIS Developer Islamabad",
     "Spatial Data Engineer",
     "Geospatial Software Engineer",
     "GIS Software Developer",
@@ -160,9 +160,9 @@ export const metadata: Metadata = {
 
   // ── Geo tags ──────────────────────────────────────────────────────────────
   other: {
-    "geo.placename": "Pakistan",
-    "geo.region": "PK",
-    ICBM: "24.8607, 67.0011", // Karachi coordinates
+    "geo.placename": "Islamabad, Pakistan",
+    "geo.region": "PK-IS",
+    ICBM: "33.6844, 73.0479", // Islamabad coordinates
   },
 };
 
@@ -227,15 +227,25 @@ const personSchema = {
     "https://www.linkedin.com/in/talha-waheed",
     "https://upwork.com/freelancers/talhaw",
   ],
+  email: "talhawaheed7807@gmail.com",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "professional inquiries",
+    email: "talhawaheed7807@gmail.com",
+    url: "https://wa.me/923096444416",
+    availableLanguage: ["English", "Urdu"],
+  },
   affiliation: {
     "@type": "Organization",
     name: "Self-employed GIS Developer",
   },
   homeLocation: {
-    "@type": "City",
-    name: "Karachi",
+    "@type": "Place",
+    name: "Islamabad",
     address: {
       "@type": "PostalAddress",
+      addressLocality: "Islamabad",
+      addressRegion: "Islamabad Capital Territory",
       addressCountry: "PK"
     }
   },

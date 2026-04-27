@@ -5,7 +5,7 @@ import Script from "next/script";
 import Logo from "../../components/Logo";
 import ProjectPageClient from "../../components/ProjectPageClient";
 import { projects, getProjectBySlug } from "../../data/projects";
-import { generateBreadcrumbSchema, generateProjectSchema } from "../../lib/seo-schemas";
+import { generateProjectSchema } from "../../lib/seo-schemas";
 
 // ─── Static generation ───────────────────────────────────────────────────────
 export async function generateStaticParams() {
@@ -13,6 +13,43 @@ export async function generateStaticParams() {
 }
 
 const BASE_URL = "https://twaheedgj.vercel.app";
+
+// ─── Description builder (130–155 chars) ─────────────────────────────────────────
+// Format: "Talha Waheed, GIS developer in Islamabad, Pakistan. {tagline}."
+// If < 130 chars: pads with " — {tag1}, {tag2}" until in range.
+// If > 155 chars: truncates at the last word boundary before char 153.
+function buildProjectDescription(project: {
+  tagline: string;
+  tags: string[];
+}): string {
+  const PREFIX = "Talha Waheed, GIS developer in Islamabad, Pakistan. ";
+  const base = `${PREFIX}${project.tagline}.`;
+
+  // Already in the ideal range
+  if (base.length >= 130 && base.length <= 155) return base;
+
+  // Too long — truncate at last word boundary before 153, add ellipsis
+  if (base.length > 155) {
+    const cut = base.slice(0, 153);
+    const lastSpace = cut.lastIndexOf(" ");
+    return cut.slice(0, lastSpace) + "…";
+  }
+
+  // Too short — append tags one by one (" — Tag1, Tag2") until ≥ 130 chars
+  let result = base.slice(0, -1); // strip trailing period while we build
+  let first = true;
+  for (const tag of project.tags) {
+    const sep = first ? " — " : ", ";
+    const next = `${result}${sep}${tag}.`;
+    if (next.length > 155) break;
+    result = next.slice(0, -1); // strip period to keep appending
+    first = false;
+    if (result.length + 1 >= 130) {
+      return result + ".";
+    }
+  }
+  return result + ".";
+}
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
 export async function generateMetadata({
@@ -26,7 +63,7 @@ export async function generateMetadata({
 
   const url = `${BASE_URL}/projects/${slug}`;
   const title = `${project.title} — Talha Waheed`;
-  const description = project.description;
+  const description = buildProjectDescription(project);
 
   return {
     title,
@@ -89,22 +126,19 @@ export default async function ProjectPage({
     .slice(0, 3);
 
   // ─── Structured Data ────────────────────────────────────────────────────────
-  const projectSchema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareSourceCode",
-    name: project.title,
+  const projectSchema = generateProjectSchema({
+    slug: project.slug,
+    title: project.title,
     description: project.description,
-    url: `${BASE_URL}/projects/${slug}`,
-    codeRepository: project.github ?? undefined,
-    programmingLanguage: project.tags,
-    author: {
-      "@type": "Person",
-      name: "Talha Waheed",
-      url: BASE_URL,
-    },
-    dateCreated: `${project.year}-01-01`,
-    keywords: [...project.tags, project.category].join(", "),
-  };
+    longDescription: project.longDescription,
+    tags: project.tags,
+    features: project.features,
+    category: project.category,
+    github: project.github,
+    live: project.live,
+    year: project.year,
+    status: project.status,
+  });
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
