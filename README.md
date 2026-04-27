@@ -93,4 +93,4 @@ I'm always interested in discussing geospatial projects, collaborating on GIS so
 - **Portfolio**: [twaheedgj.vercel.app](https://twaheedgj.vercel.app)
 
 ---
-**Last Updated**: April 2026 | **Current Location**: Islamabad.Pakistan
+**Last Updated**: April 2026 | **Current Location**: Islamabad, Pakistan
