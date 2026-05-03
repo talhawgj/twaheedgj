@@ -30,6 +30,7 @@ export default function NavBar() {
     { label: "Skills", href: "#skills" },
     { label: "Certifications", href: "#certifications" },
     { label: "Projects", href: "#projects" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "#contact" },
   ];
 

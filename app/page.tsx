@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Script from "next/script";
 import NavBar from "./components/NavBar";
 import { projects } from "./data/projects";
+import { getFeaturedBlogPosts } from "./data/blogs";
 import ProjectList from "./components/ProjectList";
 import ContactForm from "./components/ContactForm";
 import { LazySatelliteOrbitAnimation, LazyDataFlowMapAnimation } from "./components/LazyAnimations";
@@ -31,6 +33,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   const categories = Array.from(new Set(projects.map((p) => p.category)));
+  const featuredBlogPosts = getFeaturedBlogPosts();
 
   // ─── JSON-LD Schemas ───────────────────────────────────────────────────────
   const projectCollectionSchema = {
@@ -487,6 +490,87 @@ export default function Home() {
                   </svg>
                   See All Repositories on GitHub
                 </a>
+              </div>
+            </div>
+          </section>
+        </ScrollReveal>
+
+        {/* ─── Blog / Writing ─────────────────────────────────────── */}
+        <ScrollReveal>
+          <section id="blog" className="defer-paint py-24 px-5 sm:px-8 border-y border-white/5 bg-white/[0.01]">
+            <div className="max-w-5xl mx-auto">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+                <div>
+                  <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-3">Writing</h2>
+                  <p className="text-slate-400 max-w-xl">
+                    Technical deep-dives on GIS engineering, remote sensing pipelines, and cloud-native geospatial architecture.
+                  </p>
+                </div>
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-yellow-500/40 transition-all text-sm font-semibold flex-shrink-0"
+                >
+                  All Posts
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
+              </div>
+
+              <div className="space-y-6">
+                {featuredBlogPosts.map((post, i) => (
+                  <AnimatedCard
+                    key={post.slug}
+                    index={i}
+                    className="group block rounded-2xl bg-white/[0.02] border border-white/8 hover:bg-white/[0.05] hover:border-yellow-500/30 transition-all duration-300 overflow-hidden shadow-xl hover:-translate-y-0.5"
+                  >
+                    <Link href={`/blog/${post.slug}`} className="block p-7">
+                      {/* Accent bar */}
+                      <div className="h-0.5 w-full bg-gradient-to-r from-red-500 to-orange-600 mb-6 opacity-60 group-hover:opacity-100 transition-opacity rounded-full" />
+
+                      <div className="flex flex-col sm:flex-row sm:items-start gap-5">
+                        <div className="flex-1 min-w-0">
+                          {/* Meta */}
+                          <div className="flex flex-wrap items-center gap-2 mb-3">
+                            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold border bg-orange-500/10 text-orange-400 border-orange-500/20">
+                              {post.category}
+                            </span>
+                            <span className="text-slate-600 text-xs">
+                              {new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+                            </span>
+                            <span className="text-slate-600 text-xs">· {post.readingTime}</span>
+                          </div>
+
+                          {/* Title */}
+                          <h3 className="text-xl font-bold text-white mb-2 leading-snug group-hover:text-yellow-50 transition-colors">
+                            {post.title}
+                          </h3>
+
+                          {/* Excerpt */}
+                          <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
+                            {post.excerpt}
+                          </p>
+
+                          {/* Tags */}
+                          <div className="flex flex-wrap gap-1.5">
+                            {post.tags.slice(0, 5).map((tag) => (
+                              <span key={tag} className="px-2 py-0.5 rounded text-xs bg-white/5 border border-white/10 text-slate-500">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Arrow */}
+                        <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 group-hover:bg-yellow-500/20 transition-colors self-center">
+                          <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                          </svg>
+                        </div>
+                      </div>
+                    </Link>
+                  </AnimatedCard>
+                ))}
               </div>
             </div>
           </section>

@@ -82,5 +82,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/blog`,
+      lastModified: "2026-05-01",
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/blog/burn-scar-detection-sentinel-2-landsat`,
+      lastModified: "2026-05-01",
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
   ];
 }
