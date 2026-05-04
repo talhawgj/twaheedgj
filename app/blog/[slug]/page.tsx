@@ -65,6 +65,29 @@ function formatDate(dateStr: string) {
   });
 }
 
+function parseText(text: string | undefined): React.ReactNode {
+  if (!text) return null;
+  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*|\[.*?\]\(.*?\))/g);
+  return parts.map((part, i) => {
+    if (!part) return null;
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i} className="text-white font-semibold">{parseText(part.slice(2, -2))}</strong>;
+    }
+    if (part.startsWith('*') && part.endsWith('*')) {
+      return <em key={i} className="text-white italic">{parseText(part.slice(1, -1))}</em>;
+    }
+    const linkMatch = part.match(/^\[(.*?)\]\((.*?)\)$/);
+    if (linkMatch) {
+      return (
+        <a key={i} href={linkMatch[2]} target="_blank" rel="noreferrer" className="text-yellow-400 hover:underline">
+          {parseText(linkMatch[1])}
+        </a>
+      );
+    }
+    return <span key={i}>{part}</span>;
+  });
+}
+
 // ─── Content Renderer ─────────────────────────────────────────────────────────
 function RenderSection({ section }: { section: BlogSection }) {
   switch (section.type) {
@@ -84,7 +107,7 @@ function RenderSection({ section }: { section: BlogSection }) {
     case "paragraph":
       return (
         <p className="text-slate-300 leading-relaxed text-base sm:text-lg mb-5">
-          {section.text}
+          {parseText(section.text)}
         </p>
       );
     case "formula":
@@ -99,19 +122,36 @@ function RenderSection({ section }: { section: BlogSection }) {
       return (
         <ul className="space-y-3 mb-6 ml-2">
           {section.items?.map((item, i) => {
-            const [boldPart, ...rest] = item.split(":");
+            const hasMarkdownBold = item.includes("**");
+            
+            if (hasMarkdownBold) {
+              return (
+                <li key={i} className="flex items-start gap-3 text-slate-300 text-base leading-relaxed">
+                  <span className="mt-1.5 w-2 h-2 rounded-full bg-yellow-500 flex-shrink-0" />
+                  <span className="flex-1">{parseText(item)}</span>
+                </li>
+              );
+            }
+
             const hasColon = item.includes(":");
+            if (hasColon) {
+              const colonIndex = item.indexOf(":");
+              const boldPart = item.slice(0, colonIndex);
+              const rest = item.slice(colonIndex + 1);
+              return (
+                <li key={i} className="flex items-start gap-3 text-slate-300 text-base leading-relaxed">
+                  <span className="mt-1.5 w-2 h-2 rounded-full bg-yellow-500 flex-shrink-0" />
+                  <span className="flex-1">
+                    <strong className="text-white font-semibold">{boldPart}:</strong>
+                    {rest}
+                  </span>
+                </li>
+              );
+            }
             return (
               <li key={i} className="flex items-start gap-3 text-slate-300 text-base leading-relaxed">
                 <span className="mt-1.5 w-2 h-2 rounded-full bg-yellow-500 flex-shrink-0" />
-                {hasColon ? (
-                  <>
-                    <strong className="text-white font-semibold">{boldPart}:</strong>
-                    &nbsp;{rest.join(":")}
-                  </>
-                ) : (
-                  item
-                )}
+                <span className="flex-1">{item}</span>
               </li>
             );
           })}
@@ -156,6 +196,36 @@ function RenderSection({ section }: { section: BlogSection }) {
         <div className="mt-12 p-7 rounded-2xl bg-gradient-to-br from-yellow-500/5 to-orange-600/5 border border-yellow-500/20">
           <h2 className="text-xl font-bold text-yellow-400 mb-3">Conclusion</h2>
           <p className="text-slate-300 leading-relaxed">{section.text}</p>
+        </div>
+      );
+    case "image":
+      return (
+        <figure className="my-10">
+          <img src={section.src} alt={section.alt} className="w-full h-auto rounded-xl border border-white/10" />
+          {section.caption && <figcaption className="text-center text-sm text-slate-500 mt-3">{section.caption}</figcaption>}
+        </figure>
+      );
+    case "table":
+      return (
+        <div className="overflow-x-auto my-8 border border-white/10 rounded-xl bg-white/[0.02]">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr>
+                {section.headers?.map((h, i) => (
+                  <th key={i} className="border-b border-white/10 py-4 px-5 font-semibold text-white bg-white/[0.03] text-sm tracking-wide">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {section.rows?.map((row, i) => (
+                <tr key={i} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors last:border-b-0">
+                  {row.map((cell, j) => (
+                    <td key={j} className="py-4 px-5 text-slate-300 text-sm leading-relaxed">{parseText(cell)}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       );
     default:
